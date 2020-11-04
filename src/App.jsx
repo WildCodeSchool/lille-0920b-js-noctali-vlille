@@ -7,11 +7,10 @@ import { Reset } from "styled-reset";
 function App() {
   return (
     <div>
-      <Reset/>
+      <Reset />
       <Header />
       <MapLille />
       <Footer />
-      
     </div>
   );
 }
