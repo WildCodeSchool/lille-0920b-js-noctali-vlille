@@ -1,14 +1,28 @@
 import React from "react";
-import "./Footer.scss";
 import logoGps from "../images/logoGps.png";
 import logoLock from "../images/logoLock.png";
+import styled from  'styled-components';
+
+const FooterStyled = styled.div`
+  background-color: #242424;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;`
+
+const ImageStyled = styled.img`
+    height: 90%;
+    width: auto;
+    margin: auto;`
+
+
 
 function Footer() {
   return (
-    <div className="MainFooter">
-      <img src={logoGps} alt="toto"></img>
-      <img src={logoLock} alt="toto"></img>
-    </div>
+    <FooterStyled>
+      <ImageStyled src={logoGps} alt="gps"></ImageStyled>
+      <ImageStyled src={logoLock} alt="note"></ImageStyled>
+    </FooterStyled>
   );
 }
 
