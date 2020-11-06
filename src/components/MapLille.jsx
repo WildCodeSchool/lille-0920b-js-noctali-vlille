@@ -16,7 +16,6 @@ class MapLille extends React.Component {
       .get(
         "https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=251&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion"
       )
-      .then((response) => response.data)
       .then(({data}) => {
         this.setState({
           stations: data.records,
