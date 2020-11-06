@@ -20,8 +20,8 @@ const ImageStyled = styled.img`
 function Footer() {
   return (
     <FooterStyled>
-      <ImageStyled src={logoGps} alt="gps"></ImageStyled>
-      <ImageStyled src={logoNote} alt="note"></ImageStyled>
+      <ImageStyled src={logoGps} alt="gps"/>
+      <ImageStyled src={logoNote} alt="note"/>
     </FooterStyled>
   );
 }
