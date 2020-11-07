@@ -45,6 +45,7 @@ class MapLille extends React.Component {
             const match = window.matchMedia(`(max-width: 768px)`).matches;
             return match ? 20 : 14;
           }}
+          minZoom={12}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
