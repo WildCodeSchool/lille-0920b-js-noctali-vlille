@@ -16,7 +16,7 @@ class MapLille extends React.Component {
       .get(
         "https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=251&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion"
       )
-      .then(({data}) => {
+      .then(({ data }) => {
         this.setState({
           stations: data.records,
         });
@@ -39,12 +39,17 @@ class MapLille extends React.Component {
 
     return (
       <div>
-        <Map center={[latitude, longitude]} zoom={14}>
+        <Map
+          center={[latitude, longitude]}
+          zoom={() => {
+            const match = window.matchMedia(`(max-width: 768px)`).matches;
+            return match ? 20 : 14;
+          }}
+        >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-
           {stations.map((station) => (
             <Marker
               key={station.fields.nom}
