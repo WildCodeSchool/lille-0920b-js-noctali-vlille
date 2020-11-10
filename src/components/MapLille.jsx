@@ -58,6 +58,7 @@ class MapLille extends React.Component {
       iconSize: [38, 95],
       iconAnchor: [22, 94],
       shadowAnchor: [12, 42],
+      popupAnchor: [0, -85],
     });
 
     return (
