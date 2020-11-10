@@ -55,7 +55,9 @@ class MapLille extends React.Component {
       iconUrl: icon,
       iconRetinaUrl: icon,
       shadowUrl: iconShadow,
-      iconSize: [20, 30],
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      shadowAnchor: [12, 42],
     });
 
     return (
