@@ -58,10 +58,13 @@ class MapLille extends React.Component {
       ? this.props.coords.latitude
       : DEFAULT_LATITUDE;
 
-    const leafletIcon = L.icon({
-      /*
-      function icon() {
-        const fillingRate = (this.props.station.fields.nbplacesdispo / (this.props.station.fields.nbplacesdispo + this.props.station.fields.nbvelosdispo))
+    function iconSelect() {
+      return icon3;
+    }
+
+    /*
+      function iconSelect() {
+        let fillingRate = (this.props.station.fields.nbplacesdispo / (this.props.station.fields.nbplacesdispo + this.props.station.fields.nbvelosdispo))
         if (fillingRate == 0 ) {
           return icon0
         }
@@ -82,10 +85,10 @@ class MapLille extends React.Component {
         }
         
       }
-
       */
-      iconUrl: icon3,
-      iconRetinaUrl: icon3,
+    const leafletIcon = L.icon({
+      iconUrl: iconSelect(),
+      iconRetinaUrl: iconSelect(),
       shadowUrl: iconShadow,
       iconSize: [38, 95],
       iconAnchor: [22, 94],
