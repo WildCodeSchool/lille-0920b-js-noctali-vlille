@@ -7,6 +7,7 @@ import { geolocated } from "react-geolocated";
 import icon from "../images/marker-3-4.png";
 import iconShadow from "../images/marker-shadow.png";
 
+/*
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -14,6 +15,7 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: icon,
   shadowUrl: iconShadow,
 });
+*/
 
 class MapLille extends React.Component {
   constructor(props) {
@@ -49,6 +51,13 @@ class MapLille extends React.Component {
       ? this.props.coords.latitude
       : DEFAULT_LATITUDE;
 
+    const leafletIcon = L.icon({
+      iconUrl: icon,
+      iconRetinaUrl: icon,
+      shadowUrl: iconShadow,
+      iconSize: [20, 30],
+    });
+
     return (
       <div>
         <Map center={[latitude, longitude]} zoom={14} minZoom={11}>
@@ -64,6 +73,7 @@ class MapLille extends React.Component {
                 station.geometry.coordinates[1],
                 station.geometry.coordinates[0],
               ]}
+              icon={leafletIcon}
             >
               <Popup>
                 {station.fields.nom} {station.fields.etat}
