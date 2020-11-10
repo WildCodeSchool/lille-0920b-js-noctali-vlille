@@ -4,7 +4,14 @@ import axios from "axios";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import L from "leaflet";
 import { geolocated } from "react-geolocated";
-import icon from "../images/marker-3-4.png";
+
+//Markers import
+import icon0 from "../images/marker-empty.png";
+import icon1 from "../images/marker-1-4.png";
+import icon2 from "../images/marker-1-2.png";
+import icon3 from "../images/marker-3-4.png";
+import icon4 from "../images/marker-full.png";
+import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
 
 /*
@@ -52,8 +59,33 @@ class MapLille extends React.Component {
       : DEFAULT_LATITUDE;
 
     const leafletIcon = L.icon({
-      iconUrl: icon,
-      iconRetinaUrl: icon,
+      /*
+      function icon() {
+        const fillingRate = (this.props.station.fields.nbplacesdispo / (this.props.station.fields.nbplacesdispo + this.props.station.fields.nbvelosdispo))
+        if (fillingRate == 0 ) {
+          return icon0
+        }
+        else if (fillingRate < 0.33 ) {
+          return icon1
+        }
+        else if (fillingRate < 0.66 ) {
+          return icon2
+        }
+        else if (fillingRate < 0.100 ) {
+          return icon3
+        }
+        else if (fillingRate == 1 ) {
+          return icon4
+        }
+         else {
+          return iconPb
+        }
+        
+      }
+
+      */
+      iconUrl: icon3,
+      iconRetinaUrl: icon3,
       shadowUrl: iconShadow,
       iconSize: [38, 95],
       iconAnchor: [22, 94],
