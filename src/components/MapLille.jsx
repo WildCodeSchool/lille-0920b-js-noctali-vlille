@@ -11,6 +11,7 @@ delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
   iconUrl: icon,
+  iconRetinaUrl: icon,
   shadowUrl: iconShadow,
 });
 
