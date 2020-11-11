@@ -93,7 +93,7 @@ class MapLille extends React.Component {
 
           {stations.map((station) => (
             <Marker
-              key={station.fields.nom}
+              key={station.fields.libelle}
               position={[
                 station.geometry.coordinates[1],
                 station.geometry.coordinates[0],
