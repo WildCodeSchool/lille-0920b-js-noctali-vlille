@@ -47,9 +47,6 @@ class MapLille extends React.Component {
     const latitude = this.props.coords
       ? this.props.coords.latitude
       : DEFAULT_LATITUDE;
-    /*
-    
-*/
 
     function iconSelect(index) {
       let fillingRate =
