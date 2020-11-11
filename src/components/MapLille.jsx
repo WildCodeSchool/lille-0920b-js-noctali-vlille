@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
-import { Map, Marker, TileLayer, Popup } from "react-leaflet";
-import L from "leaflet";
+import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
+import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 import { geolocated } from "react-geolocated";
 import icon from "../images/marker-3-4.png";
 import iconShadow from "../images/marker-shadow.png";
+import L from "leaflet";
+import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import styled from "styled-components";
-import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
-import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 
 const PopupStyled = styled.div`
   width: max-content;
@@ -54,7 +54,7 @@ const CBStyled = styled(CreditCard)`
   &.available {
     width: 20px;
   }
-  &.notAvailable{
+  &.notAvailable {
     display: none;
   }
 `;
