@@ -3,9 +3,9 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./App.css";
 import { Reset } from "styled-reset";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import About from "./components/About";
-//import Menufoot from "./components/Menufoot";
+import AppDownload from "./components/AppDownload";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
 
       <Header />
 
-      <Router>
+      
         <Switch>
           <Route exact path="/">
             <MapLille />
@@ -22,9 +22,12 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-        </Switch>
+          <Route path="/appdownload">
+            <AppDownload/>
+          </Route>
+          </Switch>
        <Footer />
-      </Router>
+      
     </div>
   );
 }
