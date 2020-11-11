@@ -14,16 +14,6 @@ import icon4 from "../images/marker-full.png";
 import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
 
-/*
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconUrl: icon,
-  iconRetinaUrl: icon,
-  shadowUrl: iconShadow,
-});
-*/
-
 class MapLille extends React.Component {
   constructor(props) {
     super(props);
@@ -57,35 +47,27 @@ class MapLille extends React.Component {
     const latitude = this.props.coords
       ? this.props.coords.latitude
       : DEFAULT_LATITUDE;
-
-    function iconSelect() {
-      return icon3;
-    }
-
     /*
-      function iconSelect() {
-        let fillingRate = (this.props.station.fields.nbplacesdispo / (this.props.station.fields.nbplacesdispo + this.props.station.fields.nbvelosdispo))
-        if (fillingRate == 0 ) {
-          return icon0
-        }
-        else if (fillingRate < 0.33 ) {
-          return icon1
-        }
-        else if (fillingRate < 0.66 ) {
-          return icon2
-        }
-        else if (fillingRate < 0.100 ) {
-          return icon3
-        }
-        else if (fillingRate == 1 ) {
-          return icon4
-        }
-         else {
-          return iconPb
-        }
-        
+    function iconSelect() {
+      let fillingRate =
+        stations.fields.nbplacesdispo /
+        (stations.fields.nbplacesdispo + stations.fields.nbvelosdispo);
+      if (fillingRate === 0) {
+        return icon0;
+      } else if (fillingRate < 0.33) {
+        return icon1;
+      } else if (fillingRate < 0.66) {
+        return icon2;
+      } else if (fillingRate < 0.1) {
+        return icon3;
+      } else if (fillingRate === 1) {
+        return icon4;
+      } else {
+        return iconPb;
       }
-      */
+    }
+*/
+
     const leafletIcon = L.icon({
       iconUrl: iconSelect(),
       iconRetinaUrl: iconSelect(),
@@ -95,6 +77,11 @@ class MapLille extends React.Component {
       shadowAnchor: [12, 42],
       popupAnchor: [0, -85],
     });
+
+    function iconSelect() {
+      console.log(stations);
+      return icon2;
+    }
 
     return (
       <div>
