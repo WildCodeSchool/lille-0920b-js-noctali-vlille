@@ -7,14 +7,16 @@ import icon from "../images/marker-3-4.png";
 import iconShadow from "../images/marker-shadow.png";
 import styled from "styled-components";
 import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
+import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 
 const PopupStyled = styled.div`
-  width: 30vw;
-  height: 25vh;
+  width: max-content;
+  height: max-content;
 `;
 
 const IsWorking = styled.li`
   padding-bottom: 0.75vh;
+  font-weight: 600;
   &.work {
     color: green;
   }
@@ -23,9 +25,22 @@ const IsWorking = styled.li`
   }
 `;
 
+const NameStation = styled.span`
+  font-weight: bold;
+`;
+
+const InfoBicycle = styled.div`
+  margin: 1vw 0vw;
+`;
+
+const InfoNbrBike = styled.span`
+  margin-left: 3vw;
+  font-size: 1.5em;
+`;
+
 const IconBicycle = styled(Bicycle)`
-    width: 50px;
-    padding: 0.5vw;
+  width: 40px;
+  padding: 0.5vh 0vw;
   &.available {
     color: #00b600;
   }
@@ -35,8 +50,13 @@ const IconBicycle = styled(Bicycle)`
   }
 `;
 
-const infoBicycle = styled.div`
-  height: max-content;
+const CBStyled = styled(CreditCard)`
+  &.available {
+    width: 20px;
+  }
+  &.notAvailable{
+    display: none;
+  }
 `;
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -100,26 +120,49 @@ class MapLille extends React.Component {
                 <PopupStyled>
                   <IsWorking
                     className={
-                      station.fields.etat.includes("HORS SERVICE")
-                        ? "dontWork"
-                        : "work"
+                      station.fields.etat.includes("EN SERVICE")
+                        ? "work"
+                        : "dontWork"
                     }
                   >
                     {station.fields.etat}
                   </IsWorking>
                   <div>
-                    {station.fields.nom}
+                    <NameStation>{station.fields.nom}</NameStation>
                     <br />
                     {station.fields.adresse}
                     <br />
+                    <CBStyled
+                      className={
+                        station.fields.type.includes("AVEC TPE")
+                          ? "available"
+                          : "notAvailable"
+                      }
+                    />
                   </div>
-                  <infoBicycle>
-                    <IconBicycle className="available" />
-                    <span>{station.fields.nbvelosdispo} vélo(s) disponible(s) </span>
+                  <InfoBicycle>
+                    <IconBicycle
+                      className={
+                        station.fields.etat.includes("EN SERVICE")
+                          ? "available"
+                          : "notAvailable"
+                      }
+                    />
+                    <InfoNbrBike>
+                      {station.fields.nbvelosdispo}
+                      {station.fields.nbvelosdispo > 1
+                        ? " vélos disponibles"
+                        : " vélo disponible"}
+                    </InfoNbrBike>
                     <br />
                     <IconBicycle className="notAvailable" />
-                    <span>{station.fields.nbplacesdispo} place(s) disponible(s)</span>
-                  </infoBicycle>
+                    <InfoNbrBike>
+                      {station.fields.nbplacesdispo}
+                      {station.fields.nbplacesdispo > 1
+                        ? " places disponibles"
+                        : " place disponible"}
+                    </InfoNbrBike>
+                  </InfoBicycle>
                 </PopupStyled>
               </Popup>
             </Marker>
