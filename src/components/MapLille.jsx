@@ -6,20 +6,37 @@ import { geolocated } from "react-geolocated";
 import icon from "../images/marker-3-4.png";
 import iconShadow from "../images/marker-shadow.png";
 import styled from "styled-components";
+import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
 
 const PopupStyled = styled.div`
-  width: 10vw;
+  width: 30vw;
   height: 25vh;
 `;
 
 const IsWorking = styled.li`
-  padding-bottom: 0.75vw;
+  padding-bottom: 0.75vh;
   &.work {
     color: green;
   }
   &.dontWork {
     color: red;
   }
+`;
+
+const IconBicycle = styled(Bicycle)`
+    width: 50px;
+    padding: 0.5vw;
+  &.available {
+    color: #00b600;
+  }
+
+  &.notAvailable {
+    color: #adadad;
+  }
+`;
+
+const infoBicycle = styled.div`
+  height: max-content;
 `;
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -90,16 +107,19 @@ class MapLille extends React.Component {
                   >
                     {station.fields.etat}
                   </IsWorking>
-                  {station.fields.nom}
-                  <br />
-                  {station.fields.adresse}
-                  <br />
-
-                  {"Vélos dispo "}
-                  {station.fields.nbvelosdispo}
-                  <br />
-                  {"Emplacements dispo "}
-                  {station.fields.nbplacesdispo}
+                  <div>
+                    {station.fields.nom}
+                    <br />
+                    {station.fields.adresse}
+                    <br />
+                  </div>
+                  <infoBicycle>
+                    <IconBicycle className="available" />
+                    <span>{station.fields.nbvelosdispo} vélo(s) disponible(s) </span>
+                    <br />
+                    <IconBicycle className="notAvailable" />
+                    <span>{station.fields.nbplacesdispo} place(s) disponible(s)</span>
+                  </infoBicycle>
                 </PopupStyled>
               </Popup>
             </Marker>
