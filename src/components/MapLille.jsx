@@ -48,10 +48,14 @@ class MapLille extends React.Component {
       ? this.props.coords.latitude
       : DEFAULT_LATITUDE;
     /*
-    function iconSelect() {
+    
+*/
+
+    function iconSelect(index) {
       let fillingRate =
-        stations.fields.nbplacesdispo /
-        (stations.fields.nbplacesdispo + stations.fields.nbvelosdispo);
+        stations[index].fields.nbplacesdispo /
+        (stations[index].fields.nbplacesdispo +
+          stations[index].fields.nbvelosdispo);
       if (fillingRate === 0) {
         return icon0;
       } else if (fillingRate < 0.33) {
@@ -66,22 +70,6 @@ class MapLille extends React.Component {
         return iconPb;
       }
     }
-*/
-
-    const leafletIcon = L.icon({
-      iconUrl: iconSelect(),
-      iconRetinaUrl: iconSelect(),
-      shadowUrl: iconShadow,
-      iconSize: [38, 95],
-      iconAnchor: [22, 94],
-      shadowAnchor: [12, 42],
-      popupAnchor: [0, -85],
-    });
-
-    function iconSelect() {
-      console.log(stations);
-      return icon2;
-    }
 
     return (
       <div>
@@ -91,14 +79,22 @@ class MapLille extends React.Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
 
-          {stations.map((station) => (
+          {stations.map((station, index) => (
             <Marker
-              key={station.fields.libelle}
+              key={index}
               position={[
                 station.geometry.coordinates[1],
                 station.geometry.coordinates[0],
               ]}
-              icon={leafletIcon}
+              icon={L.icon({
+                iconUrl: iconSelect(index),
+                iconRetinaUrl: iconSelect(index),
+                shadowUrl: iconShadow,
+                iconSize: [38, 95],
+                iconAnchor: [22, 94],
+                shadowAnchor: [12, 42],
+                popupAnchor: [0, -85],
+              })}
             >
               <Popup>
                 {station.fields.nom} {station.fields.etat}
