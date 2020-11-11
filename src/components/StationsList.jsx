@@ -13,24 +13,22 @@ const ListStyled = styled.div`
 	font-family: "Montserrat", sans-serif;
 `;
 
-const StatusOnline = styled.div`
+const Status = styled.div`
 	display: inline-block;
 	border-radius: 50%;
 	width: 10px;
 	height: 10px;
 	margin: 0 4px 0px 6px;
-	background: #78e000;
-	border: solid 1px rgb(195, 255, 0);
-`;
 
-const StatusOffline = styled.div`
-	display: inline-block;
-	border-radius: 50%;
-	width: 10px;
-	height: 10px;
-	margin: 0 4px 0px 6px;
-	background: #ff3c00;
-	border: solid 1px #ffbb00;
+	&.Online {
+		background: #78e000;
+		border: solid 1px hsl(74.11764705882354, 100%, 50%);
+	}
+
+	&.Offline {
+		background: #ff3c00;
+		border: solid 1px #ffbb00;
+	}
 `;
 
 const CBStyled = styled.img`
@@ -70,11 +68,13 @@ class StationsList extends React.Component {
 				{stations.map((station) => (
 					<div>
 						{station.fields.nom}
-						{station.fields.etat.includes("EN SERVICE") ? (
-							<StatusOnline />
-						) : (
-							<StatusOffline />
-						)}
+						<Status
+							className={
+								station.fields.etat.includes("EN SERVICE")
+									? "Online"
+									: "Offline"
+							}
+						/>
 						{station.fields.type.includes("AVEC TPE") ? (
 							<CBStyled src={cbicon} alt={station.fields.type} />
 						) : (
