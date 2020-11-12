@@ -15,17 +15,17 @@ const AlignStyled = styled.ul`
   align-items: center;
   color: white;
 `;
-// const ImageStyled = styled.img`
-//  height: 90%;
+ //const ImageStyled = styled.img`
+ // height: 90%;
 // width: auto;
-//  margin: auto;
+ // margin: auto;
 //`;
 
 function Footer() {
   return (
-    // <FooterStyled>
-    // <ImageStyled src={logoGps} alt="gps" />
-    //  <ImageStyled src={logoNote} alt="note" />
+     //<FooterStyled>
+     //<ImageStyled src={logoGps} alt="gps" />
+     // <ImageStyled src={logoNote} alt="note" />
 
     <AlignStyled>
       <li>
@@ -38,7 +38,8 @@ function Footer() {
         <Link to="/teamnoctali">Notre équipe</Link>
       </li>
     </AlignStyled>
-    // </FooterStyled>
+    //</FooterStyled>
+  
   );
 }
 
