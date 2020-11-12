@@ -6,6 +6,7 @@ import { Reset } from "styled-reset";
 import { Route, Switch } from "react-router-dom";
 import About from "./components/About";
 import AppDownload from "./components/AppDownload";
+import TeamNoctali from "./components/TeamNoctali";
 
 function App() {
   return (
@@ -14,20 +15,21 @@ function App() {
 
       <Header />
 
-      
-        <Switch>
-          <Route exact path="/">
-            <MapLille />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/appdownload">
-            <AppDownload/>
-          </Route>
-          </Switch>
-       <Footer />
-      
+      <Switch>
+        <Route exact path="/">
+          <MapLille />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/appdownload">
+          <AppDownload />
+        </Route>
+        <Route path="/teamnoctali">
+          <TeamNoctali />
+        </Route>
+      </Switch>
+      <Footer />
     </div>
   );
 }
