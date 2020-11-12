@@ -12,6 +12,9 @@ import styled from "styled-components";
 const PopupStyled = styled.div`
   width: max-content;
   height: max-content;
+  @media screen and (max-width: 375px) and (max-height: 812px){
+    width: 35vw;
+  }
 `;
 
 const IsWorking = styled.li`
@@ -30,12 +33,19 @@ const NameStation = styled.span`
 `;
 
 const InfoBicycle = styled.div`
+  display: flex;
   margin: 1vw 0vw;
+  @media screen and (max-width: 375px) and (max-height: 812px){
+    display: inline;
+  }
 `;
 
 const InfoNbrBike = styled.span`
-  margin-left: 3vw;
+  margin: 1vw;
   font-size: 1.5em;
+  @media screen and (max-width: 375px) and (max-height: 812px){
+    margin: 3vw;
+  }
 `;
 
 const IconBicycle = styled(Bicycle)`
@@ -148,20 +158,10 @@ class MapLille extends React.Component {
                           : "notAvailable"
                       }
                     />
-                    <InfoNbrBike>
-                      {station.fields.nbvelosdispo}
-                      {station.fields.nbvelosdispo > 1
-                        ? " vélos disponibles"
-                        : " vélo disponible"}
-                    </InfoNbrBike>
+                    <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
                     <br />
                     <IconBicycle className="notAvailable" />
-                    <InfoNbrBike>
-                      {station.fields.nbplacesdispo}
-                      {station.fields.nbplacesdispo > 1
-                        ? " places disponibles"
-                        : " place disponible"}
-                    </InfoNbrBike>
+                    <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
                   </InfoBicycle>
                 </PopupStyled>
               </Popup>
