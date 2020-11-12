@@ -1,10 +1,11 @@
 import React from "react";
-//import logoGps from "../images/logoGps.png";
-//import logoNote from "../images/logoNote.png";
+import home from "../images/home.png";
+import equipe from "../images/equipe.jpg";
+import presentation from "../images/presentation.jpg";
 import styled from "styled-components";
-//import About from "./About";
 import { Link } from "react-router-dom";
-//import { LatLng } from "leaflet";
+
+
 
 const AlignStyled = styled.ul`
   background-color: #242424;
@@ -15,31 +16,36 @@ const AlignStyled = styled.ul`
   align-items: center;
   color: white;
 `;
- //const ImageStyled = styled.img`
- // height: 90%;
-// width: auto;
- // margin: auto;
-//`;
+const ImageStyled = styled.img`
+  height: 40px;
+  width: 60px;
+`;
 
 function Footer() {
   return (
-     //<FooterStyled>
-     //<ImageStyled src={logoGps} alt="gps" />
-     // <ImageStyled src={logoNote} alt="note" />
-
+    
     <AlignStyled>
       <li>
-        <Link to="/about">A propos</Link>
+        <Link to="/about">
+          <ImageStyled
+            id="presentation"
+            src={presentation}
+            alt="presentation"
+          />
+        </Link>
       </li>
       <li>
-        <Link to="/">Accueil</Link>
+        <Link to="/">
+          <ImageStyled id="home" src={home} alt="home" />
+        </Link>
       </li>
       <li>
-        <Link to="/teamnoctali">Notre équipe</Link>
+        <Link to="/teamnoctali">
+          <ImageStyled id="equipe" src={equipe} alt="equipe" />
+        </Link>
       </li>
     </AlignStyled>
     //</FooterStyled>
-  
   );
 }
 

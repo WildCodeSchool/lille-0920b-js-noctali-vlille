@@ -14,9 +14,8 @@ const ContainerStyled = styled.div`
   align-items: center;
   background-color: rgb(221, 214, 214);
   width: 100% auto;
-  height: 100%`
-
-
+  height: 100%;
+`;
 
 const PictureStyled = styled.img`
   width: 400px;
@@ -52,7 +51,8 @@ const LinkedinStyled = styled.img`
 
 const TeamStyled = styled.h1`
   margin: 20px;
-  font-size: 40px;`
+  font-size: 40px;
+`;
 
 function TeamNoctali() {
   return (
@@ -71,15 +71,16 @@ function TeamNoctali() {
       <NameStyled>Nordine Madoui</NameStyled>
 
       <PictureStyled id="nordine" src={Nordine} alt="picturenordine" />
-      
 
-      <LinkStyled href="https://github.com/nordinemadoui/"><LinkedinStyled src={githup} />
+      <LinkStyled href="https://github.com/nordinemadoui/">
+        <LinkedinStyled src={githup} />
       </LinkStyled>
 
       <NameStyled>Thomas Druart</NameStyled>
 
       <PictureStyled id="thomas" src={Thomas} alt="picturethomas" />
-      <LinkStyled href="https://github.com/thomasdruart/"><LinkedinStyled src={githup} />
+      <LinkStyled href="https://github.com/thomasdruart/">
+        <LinkedinStyled src={githup} />
       </LinkStyled>
       <LinkStyled href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr">
         <LinkedinStyled src={linkedin} />
@@ -88,8 +89,8 @@ function TeamNoctali() {
       <NameStyled>Gaetan Cordonnier</NameStyled>
 
       <PictureStyled id="gaetan" src={Gaetan} alt="picturegaetan" />
-     <LinkStyled href="https://github.com/gaetan-cordonnier/"><LinkedinStyled src={githup} />
-    
+      <LinkStyled href="https://github.com/gaetan-cordonnier/">
+        <LinkedinStyled src={githup} />
       </LinkStyled>
       <LinkStyled href="https://www.linkedin.com/in/gaetancordonnier/">
         <LinkedinStyled src={linkedin} />
@@ -98,7 +99,8 @@ function TeamNoctali() {
       <NameStyled>Alexis Catrix</NameStyled>
 
       <PictureStyled id="gaetan" src={Alexis} alt="picturealexis" />
-      <LinkStyled href="https://github.com/AlexisCatrix/"><LinkedinStyled src={githup} />
+      <LinkStyled href="https://github.com/AlexisCatrix/">
+        <LinkedinStyled src={githup} />
       </LinkStyled>
     </ContainerStyled>
   );

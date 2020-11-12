@@ -32,8 +32,6 @@ const TitleStyled = styled.h1`
   font-size: 30px;
 `;
 
-
-
 const About = () => {
   return (
     <DivStyled>
@@ -41,7 +39,7 @@ const About = () => {
         <TitleStyled>Doukilemin V'lille</TitleStyled>
 
         <ImgStyled id="Velo1" src={Velo1} alt="logovelo" />
-        
+
         <p>
           Doukilemin V'lille est dédié aux utilisateurs du V'lille et de son
           service VLS (Vélos en Libre Service).
@@ -74,7 +72,6 @@ const About = () => {
             <Link to="/appdownload">Télécharger l'application</Link>
           </li>
         </ul>
-    
       </BorderStyled>
     </DivStyled>
   );
