@@ -18,6 +18,7 @@ import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
 
 const PopupStyled = styled.div`
+	font-family: "Montserrat", sans-serif;
 	width: max-content;
 	height: max-content;
 	@media screen and (max-width: 375px) and (max-height: 812px) {
