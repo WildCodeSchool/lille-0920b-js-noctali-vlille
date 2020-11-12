@@ -59,7 +59,7 @@ class MapLille extends React.Component {
         return icon1;
       } else if (fillingRate < 0.66) {
         return icon2;
-      } else if (fillingRate < 0.1) {
+      } else if (fillingRate < 1) {
         return icon3;
       } else if (fillingRate === 1) {
         return icon4;
