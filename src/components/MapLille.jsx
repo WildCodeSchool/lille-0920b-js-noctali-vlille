@@ -12,7 +12,7 @@ import styled from "styled-components";
 const PopupStyled = styled.div`
   width: max-content;
   height: max-content;
-  @media screen and (max-width: 375px) and (max-height: 812px){
+  @media screen and (max-width: 375px) and (max-height: 812px) {
     width: 35vw;
   }
 `;
@@ -24,7 +24,7 @@ const IsWorking = styled.li`
     color: green;
   }
   &.dontWork {
-    color: red;
+    color: #ff3c00;
   }
 `;
 
@@ -35,7 +35,7 @@ const NameStation = styled.span`
 const InfoBicycle = styled.div`
   display: flex;
   margin: 1vw 0vw;
-  @media screen and (max-width: 375px) and (max-height: 812px){
+  @media screen and (max-width: 375px) and (max-height: 812px) {
     display: inline;
   }
 `;
@@ -43,7 +43,7 @@ const InfoBicycle = styled.div`
 const InfoNbrBike = styled.span`
   margin: 1vw;
   font-size: 1.5em;
-  @media screen and (max-width: 375px) and (max-height: 812px){
+  @media screen and (max-width: 375px) and (max-height: 812px) {
     margin: 3vw;
   }
 `;
@@ -126,45 +126,49 @@ class MapLille extends React.Component {
                 station.geometry.coordinates[0],
               ]}
             >
-              <Popup>
-                <PopupStyled>
-                  <IsWorking
-                    className={
-                      station.fields.etat.includes("EN SERVICE")
-                        ? "work"
-                        : "dontWork"
-                    }
-                  >
-                    {station.fields.etat}
-                  </IsWorking>
-                  <div>
-                    <NameStation>{station.fields.nom}</NameStation>
-                    <br />
-                    {station.fields.adresse}
-                    <br />
-                    <CBStyled
-                      className={
-                        station.fields.type.includes("AVEC TPE")
-                          ? "available"
-                          : "notAvailable"
-                      }
-                    />
-                  </div>
-                  <InfoBicycle>
-                    <IconBicycle
+              {station.fields.etat.includes("HORS SERVICE") ? (
+                ""
+              ) : (
+                <Popup>
+                  <PopupStyled>
+                    <IsWorking
                       className={
                         station.fields.etat.includes("EN SERVICE")
-                          ? "available"
-                          : "notAvailable"
+                          ? "work"
+                          : "dontWork"
                       }
-                    />
-                    <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
-                    <br />
-                    <IconBicycle className="notAvailable" />
-                    <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
-                  </InfoBicycle>
-                </PopupStyled>
-              </Popup>
+                    >
+                      {station.fields.etat}
+                    </IsWorking>
+                    <div>
+                      <NameStation>{station.fields.nom}</NameStation>
+                      <br />
+                      {station.fields.adresse}
+                      <br />
+                      <CBStyled
+                        className={
+                          station.fields.type.includes("AVEC TPE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                    </div>
+                    <InfoBicycle>
+                      <IconBicycle
+                        className={
+                          station.fields.etat.includes("EN SERVICE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                      <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
+                      <br />
+                      <IconBicycle className="notAvailable" />
+                      <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
+                    </InfoBicycle>
+                  </PopupStyled>
+                </Popup>
+              )}
             </Marker>
           ))}
         </Map>
