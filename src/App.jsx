@@ -10,7 +10,8 @@ function App() {
 		<div>
 			<Reset />
 			<Header />
-			<StationsList />
+			<MapLille/>
+			{/* <StationsList /> */}
 			<Footer />
 		</div>
 	);

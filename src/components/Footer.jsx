@@ -9,9 +9,9 @@ const FooterStyled = styled.div`
 	height: 10vh;
 	display: flex;
 	justify-content: space-around;
-	position: fixed;
+	/* position: fixed;
 	z-index: 4;
-	bottom: 0px;
+	bottom: 0px; */
 `;
 
 const ImageStyled = styled.img`

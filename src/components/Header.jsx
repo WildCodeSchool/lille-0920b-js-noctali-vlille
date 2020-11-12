@@ -8,8 +8,8 @@ const HeaderStyled = styled.header`
 	background-color: #242424;
 	height: 10vh;
 	width: 100vw;
-	z-index: 3;
-	position: fixed;
+	/* z-index: 3;
+	position: fixed; */
 `;
 
 const LogoHeader = styled.img`

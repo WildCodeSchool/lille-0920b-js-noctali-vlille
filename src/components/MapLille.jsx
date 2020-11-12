@@ -3,7 +3,7 @@ import axios from "axios";
 import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
 import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 import { geolocated } from "react-geolocated";
-import iconShadow from "../images/marker-shadow.png";
+// import iconShadow from "../images/marker-shadow.png";
 import L from "leaflet";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import styled from "styled-components";
@@ -156,45 +156,49 @@ class MapLille extends React.Component {
                 popupAnchor: [0, -85],
               })}
             >
-              <Popup>
-                <PopupStyled>
-                  <IsWorking
-                    className={
-                      station.fields.etat.includes("EN SERVICE")
-                        ? "work"
-                        : "dontWork"
-                    }
-                  >
-                    {station.fields.etat}
-                  </IsWorking>
-                  <div>
-                    <NameStation>{station.fields.nom}</NameStation>
-                    <br />
-                    {station.fields.adresse}
-                    <br />
-                    <CBStyled
-                      className={
-                        station.fields.type.includes("AVEC TPE")
-                          ? "available"
-                          : "notAvailable"
-                      }
-                    />
-                  </div>
-                  <InfoBicycle>
-                    <IconBicycle
+              {station.fields.etat.includes("HORS SERVICE") ? (
+                ""
+              ) : (
+                <Popup>
+                  <PopupStyled>
+                    <IsWorking
                       className={
                         station.fields.etat.includes("EN SERVICE")
-                          ? "available"
-                          : "notAvailable"
+                          ? "work"
+                          : "dontWork"
                       }
-                    />
-                    <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
-                    <br />
-                    <IconBicycle className="notAvailable" />
-                    <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
-                  </InfoBicycle>
-                </PopupStyled>
-              </Popup>
+                    >
+                      {station.fields.etat}
+                    </IsWorking>
+                    <div>
+                      <NameStation>{station.fields.nom}</NameStation>
+                      <br />
+                      {station.fields.adresse}
+                      <br />
+                      <CBStyled
+                        className={
+                          station.fields.type.includes("AVEC TPE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                    </div>
+                    <InfoBicycle>
+                      <IconBicycle
+                        className={
+                          station.fields.etat.includes("EN SERVICE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                      <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
+                      <br />
+                      <IconBicycle className="notAvailable" />
+                      <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
+                    </InfoBicycle>
+                  </PopupStyled>
+                </Popup>
+              )}
             </Marker>
           ))}
         </Map>
