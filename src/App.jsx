@@ -6,15 +6,14 @@ import { Reset } from "styled-reset";
 import StationsList from "./components/StationsList";
 
 function App() {
-	return (
-		<div>
-			<Reset />
-			<Header />
-			<MapLille />
-			{/* <StationsList /> */}
-			<Footer />
-		</div>
-	);
+  return (
+    <div>
+      <Reset />
+      <Header />
+      <MapLille />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

@@ -3,7 +3,6 @@ import axios from "axios";
 import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
 import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 import { geolocated } from "react-geolocated";
-// import iconShadow from "../images/marker-shadow.png";
 import L from "leaflet";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import styled from "styled-components";
