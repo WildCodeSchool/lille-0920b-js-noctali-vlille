@@ -19,6 +19,7 @@ import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
 
 const PopupStyled = styled.div`
+  font-family: "Montserrat", sans-serif;
   width: max-content;
   height: max-content;
   @media screen and (max-width: 375px) and (max-height: 812px) {
@@ -133,10 +134,18 @@ class MapLille extends React.Component {
 
     function iconSelect(index) {
       let fillingRate =
-        stations[index].fields.nbplacesdispo /
+        stations[index].fields.nbvelosdispo /
         (stations[index].fields.nbplacesdispo +
           stations[index].fields.nbvelosdispo);
-      if (fillingRate === 0) {
+
+      if (stations[index].fields.etat.includes("HORS SERVICE")) {
+        return iconPb;
+      } else if (
+        stations[index].fields.nbvelosdispo === 0 &&
+        stations[index].fields.nbplacesdispo === 0
+      ) {
+        return iconPb;
+      } else if (fillingRate === 0) {
         return icon0;
       } else if (fillingRate < 0.33) {
         return icon1;
@@ -144,10 +153,8 @@ class MapLille extends React.Component {
         return icon2;
       } else if (fillingRate < 1) {
         return icon3;
-      } else if (fillingRate === 1) {
-        return icon4;
       } else {
-        return iconPb;
+        return icon4;
       }
     }
 
@@ -170,63 +177,60 @@ class MapLille extends React.Component {
                 iconUrl: iconSelect(index),
                 iconRetinaUrl: iconSelect(index),
                 shadowUrl: iconShadow,
-                iconSize: [38, 95],
-                iconAnchor: [22, 94],
+                iconSize: [30, 42],
+                iconAnchor: [15, 42],
                 shadowAnchor: [12, 42],
-                popupAnchor: [0, -85],
+                popupAnchor: [0, -40],
               })}
             >
-              {station.fields.etat.includes("HORS SERVICE") ? (
-                ""
-              ) : (
-                <Popup>
-                  <PopupStyled>
-                    <IsWorking
-                      className={
-                        station.fields.etat.includes("EN SERVICE")
-                          ? "work"
-                          : "dontWork"
-                      }
-                    >
-                      {station.fields.etat}
-                    </IsWorking>
-                    <div>
-                      <NameStation>{station.fields.nom}</NameStation>
-                      <br />
-                      {station.fields.adresse}
-                      <br />
-                      <InfoCB>
-                        <CBStyled
-                          className={
-                            station.fields.type.includes("AVEC TPE")
-                              ? "available"
-                              : "notAvailable"
-                          }
-                        />
-                        <CircleSlashStyled
-                          className={
-                            station.fields.type.includes("AVEC TPE")
-                              ? "available"
-                              : "notAvailable"
-                          }
-                        />
-                      </InfoCB>
-                    </div>
-                    <InfoBicycle>
-                      <IconBicycle
+              <Popup>
+                <PopupStyled>
+                  <IsWorking
+                    className={
+                      station.fields.etat.includes("EN SERVICE")
+                        ? "work"
+                        : "dontWork"
+                    }
+                  >
+                    {station.fields.etat}
+                  </IsWorking>
+                  <div>
+                    <NameStation>{station.fields.nom}</NameStation>
+                    <br />
+                    {station.fields.adresse}
+                    <br />
+                    <InfoCB>
+                      <CBStyled
                         className={
-                          station.fields.etat.includes("EN SERVICE")
+                          station.fields.type.includes("AVEC TPE")
                             ? "available"
                             : "notAvailable"
                         }
                       />
-                      <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
-                      <br />
-                      <IconBicycle className="notAvailable" />
-                      <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
-                    </InfoBicycle>
-                  </PopupStyled>
-                </Popup>
+                      <CircleSlashStyled
+                        className={
+                          station.fields.type.includes("AVEC TPE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                    </InfoCB>
+                  </div>
+                  <InfoBicycle>
+                    <IconBicycle
+                      className={
+                        station.fields.etat.includes("EN SERVICE")
+                          ? "available"
+                          : "notAvailable"
+                      }
+                    />
+                    <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
+                    <br />
+                    <IconBicycle className="notAvailable" />
+                    <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
+                  </InfoBicycle>
+                </PopupStyled>
+              </Popup>
               )}
             </Marker>
           ))}
