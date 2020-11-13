@@ -90,11 +90,13 @@ const CBStyled = styled(CreditCard)`
 const CircleSlashStyled = styled(CircleSlash)`
   &.available {
     display: none;
+    opacity: 65%;
   }
   &.notAvailable {
     width: 30px;
     color: #ff0000;
     position: absolute;
+    opacity: 65%;
   }
 `;
 
