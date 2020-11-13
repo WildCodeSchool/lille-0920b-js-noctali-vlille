@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
 import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
+import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
 import { geolocated } from "react-geolocated";
 // import iconShadow from "../images/marker-shadow.png";
 import L from "leaflet";
@@ -68,12 +69,31 @@ const IconBicycle = styled(Bicycle)`
   }
 `;
 
+const InfoCB = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  margin-top: 1vh;
+`;
+
 const CBStyled = styled(CreditCard)`
+  width: 20px;
   &.available {
-    width: 20px;
   }
   &.notAvailable {
+    color: #000000;
+  }
+`;
+
+const CircleSlashStyled = styled(CircleSlash)`
+  &.available {
     display: none;
+  }
+  &.notAvailable {
+    width: 30px;
+    color: #ff0000;
+    position: absolute;
   }
 `;
 
@@ -175,13 +195,22 @@ class MapLille extends React.Component {
                       <br />
                       {station.fields.adresse}
                       <br />
-                      <CBStyled
-                        className={
-                          station.fields.type.includes("AVEC TPE")
-                            ? "available"
-                            : "notAvailable"
-                        }
-                      />
+                      <InfoCB>
+                        <CBStyled
+                          className={
+                            station.fields.type.includes("AVEC TPE")
+                              ? "available"
+                              : "notAvailable"
+                          }
+                        />
+                        <CircleSlashStyled
+                          className={
+                            station.fields.type.includes("AVEC TPE")
+                              ? "available"
+                              : "notAvailable"
+                          }
+                        />
+                      </InfoCB>
                     </div>
                     <InfoBicycle>
                       <IconBicycle
