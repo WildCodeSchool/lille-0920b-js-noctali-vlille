@@ -7,6 +7,8 @@ import { Route, Switch } from "react-router-dom";
 import About from "./components/About";
 import AppDownload from "./components/AppDownload";
 import TeamNoctali from "./components/TeamNoctali";
+import StationsList from "./components/StationsList";
+
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <Reset />
 
       <Header />
-
+      <StationsList/>
       <Switch>
         <Route exact path="/">
           <MapLille />
