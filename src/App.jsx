@@ -16,7 +16,7 @@ function App() {
       <Reset />
 
       <Header />
-      <StationsList/>
+      
       <Switch>
         <Route exact path="/">
           <MapLille />
@@ -29,6 +29,9 @@ function App() {
         </Route>
         <Route path="/teamnoctali">
           <TeamNoctali />
+        </Route>
+        <Route path="/stationslist">
+        <StationsList/>
         </Route>
       </Switch>
       <Footer />
