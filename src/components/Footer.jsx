@@ -6,12 +6,9 @@ import logoGps from "../images/logoGps.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
-
 const AlignStyled = styled.ul`
   background-color: #242424;
   width: 100vw;
-  height: 10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -24,15 +21,10 @@ const ImageStyled = styled.img`
 
 function Footer() {
   return (
-    
     <AlignStyled>
       <li>
         <Link to="/about">
-          <ImageStyled
-            id="info"
-            src={info}
-            alt="logoinfo"
-          />
+          <ImageStyled id="info" src={info} alt="logoinfo" />
         </Link>
       </li>
       <li>
@@ -47,11 +39,10 @@ function Footer() {
       </li>
       <li>
         <Link to="/stationslist">
-          <ImageStyled id="logogps" src={logoGps} alt="logoGps"/>
+          <ImageStyled id="logogps" src={logoGps} alt="logoGps" />
         </Link>
       </li>
     </AlignStyled>
-    //</FooterStyled>
   );
 }
 

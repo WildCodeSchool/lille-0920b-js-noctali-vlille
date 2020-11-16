@@ -27,9 +27,9 @@ const AppStyled = styled.img`
 `;
 
 const BorderStyled = styled.div`
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   box-shadow: 1px solid;
   padding: 10px;
   margin: auto;
@@ -45,11 +45,11 @@ const ButtonStyled = styled.button`
   width: 100px;
   height: 50px;
   color: white;
-
 `;
 
 const ParaStyled = styled.p`
-  margin-top: 300px;`
+  margin-top: 300px;
+`;
 
 function AppDownload() {
   return (
@@ -58,7 +58,6 @@ function AppDownload() {
         <AppStyled id="logoHeader" src={Logo1} alt="logo" />
 
         <ButtonStyled>Télécharger</ButtonStyled>
-        
 
         <ImageStyled id="HomeApp" src={Home} alt="logohome" />
 
@@ -72,7 +71,6 @@ function AppDownload() {
           Doukilemin v'lille, l'application non officielle pour les habitués du
           VLS du service V'Lille.
         </ParaStyled>
-        
       </BorderStyled>
     </PageStyled>
   );

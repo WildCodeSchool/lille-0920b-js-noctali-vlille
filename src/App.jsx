@@ -9,14 +9,13 @@ import AppDownload from "./components/AppDownload";
 import TeamNoctali from "./components/TeamNoctali";
 import StationsList from "./components/StationsList";
 
-
 function App() {
   return (
     <div>
       <Reset />
 
       <Header />
-      
+
       <Switch>
         <Route exact path="/">
           <MapLille />
@@ -31,7 +30,7 @@ function App() {
           <TeamNoctali />
         </Route>
         <Route path="/stationslist">
-        <StationsList/>
+          <StationsList />
         </Route>
       </Switch>
       <Footer />
