@@ -1,7 +1,7 @@
 import React from "react";
-import home from "../images/home.png";
-import equipe from "../images/equipe.jpg";
-import presentation from "../images/presentation.jpg";
+import homefondnoir from "../images/homefondnoir.jpg";
+import team from "../images/team.jpg";
+import info from "../images/info.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -17,8 +17,8 @@ const AlignStyled = styled.ul`
   color: white;
 `;
 const ImageStyled = styled.img`
-  height: 40px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
 `;
 
 function Footer() {
@@ -28,20 +28,20 @@ function Footer() {
       <li>
         <Link to="/about">
           <ImageStyled
-            id="presentation"
-            src={presentation}
-            alt="presentation"
+            id="info"
+            src={info}
+            alt="logoinfo"
           />
         </Link>
       </li>
       <li>
         <Link to="/">
-          <ImageStyled id="home" src={home} alt="home" />
+          <ImageStyled id="home" src={homefondnoir} alt="home" />
         </Link>
       </li>
       <li>
         <Link to="/teamnoctali">
-          <ImageStyled id="equipe" src={equipe} alt="equipe" />
+          <ImageStyled id="teams" src={team} alt="teams" />
         </Link>
       </li>
     </AlignStyled>

@@ -27,7 +27,9 @@ const AppStyled = styled.img`
 `;
 
 const BorderStyled = styled.div`
-  display: flex;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
   box-shadow: 1px solid;
   padding: 10px;
   margin: auto;
@@ -38,10 +40,16 @@ const ButtonStyled = styled.button`
   background-color: rgb(104, 159, 56);
   border-radius: 5px;
   box-shadow: 1px;
-  padding: 10px;
-  margin-block: 150px;
+  padding: 2px;
+  margin-top: 80px;
+  width: 100px;
+  height: 50px;
   color: white;
+
 `;
+
+const ParaStyled = styled.p`
+  margin-top: 300px;`
 
 function AppDownload() {
   return (
@@ -50,19 +58,21 @@ function AppDownload() {
         <AppStyled id="logoHeader" src={Logo1} alt="logo" />
 
         <ButtonStyled>Télécharger</ButtonStyled>
+        
 
         <ImageStyled id="HomeApp" src={Home} alt="logohome" />
 
         <ImageStyled id="carte" src={carteinfos} alt="logocarte" />
 
         <ImageStyled id="stations" src={stations} alt="logostations" />
-        <p>
+        <ParaStyled>
           L'application offre également une recherche rapide et une localisation
           des stations les plus proches.
           <br />
           Doukilemin v'lille, l'application non officielle pour les habitués du
           VLS du service V'Lille.
-        </p>
+        </ParaStyled>
+        
       </BorderStyled>
     </PageStyled>
   );

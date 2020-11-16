@@ -12,19 +12,21 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(221, 214, 214);
+  //background-color: rgb(221, 214, 214);
   width: 100% auto;
   height: 100%;
 `;
 
 const PictureStyled = styled.img`
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 400px;
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
+  
+  
 `;
 
 const NameStyled = styled.h2`
@@ -32,9 +34,6 @@ const NameStyled = styled.h2`
   margin: 10px;
 `;
 
-const LinkStyled = styled.a`
-  font-style: italic;
-`;
 
 const ParaStyled = styled.p`
   width: 400px;
@@ -42,11 +41,15 @@ const ParaStyled = styled.p`
   margin: 20px;
 `;
 
-const LinkedinStyled = styled.img`
-  display: inline-block;
-  width: 30px;
+const LinkStyled = styled.a`
+   width: 10px;`
+  
+
+const LogoStyled = styled.img`
+  width: 40px;
   height: 30px;
   margin: 5px;
+  align-items: center;
 `;
 
 const TeamStyled = styled.h1`
@@ -61,46 +64,42 @@ function TeamNoctali() {
 
       <ParaStyled>
         La réalisation de cette application web sur une durée de 6 semaines avec
-        l'utilisation de l'API V'lille fut piloté par une équipe de 4
-        développeurs juniors passionnés par la programmation.
+        l'utilisation de l'API V'lille fut piloté par une équipe de 4 développeurs juniors passionnés par la programmation au sein de la Wild Code School de Lille.
       </ParaStyled>
       <img id="Velo1" src={Logo1} alt="logovelo" />
       <ParaStyled>Les membres de l'équipe :</ParaStyled>
       <br />
-
       <NameStyled>Nordine Madoui</NameStyled>
-
-      <PictureStyled id="nordine" src={Nordine} alt="picturenordine" />
+     <PictureStyled id="nordine" src={Nordine} alt="picturenordine" />
 
       <LinkStyled href="https://github.com/nordinemadoui/">
-        <LinkedinStyled src={githup} />
+        <LogoStyled src={githup} />
       </LinkStyled>
-
+      
+      
       <NameStyled>Thomas Druart</NameStyled>
-
       <PictureStyled id="thomas" src={Thomas} alt="picturethomas" />
       <LinkStyled href="https://github.com/thomasdruart/">
-        <LinkedinStyled src={githup} />
+        <LogoStyled src={githup} />
       </LinkStyled>
       <LinkStyled href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr">
-        <LinkedinStyled src={linkedin} />
+        <LogoStyled src={linkedin} />
       </LinkStyled>
-
+      
       <NameStyled>Gaetan Cordonnier</NameStyled>
-
       <PictureStyled id="gaetan" src={Gaetan} alt="picturegaetan" />
       <LinkStyled href="https://github.com/gaetan-cordonnier/">
-        <LinkedinStyled src={githup} />
+        <LogoStyled src={githup} />
       </LinkStyled>
       <LinkStyled href="https://www.linkedin.com/in/gaetancordonnier/">
-        <LinkedinStyled src={linkedin} />
+        <LogoStyled src={linkedin} />
       </LinkStyled>
-
+      
       <NameStyled>Alexis Catrix</NameStyled>
 
       <PictureStyled id="gaetan" src={Alexis} alt="picturealexis" />
       <LinkStyled href="https://github.com/AlexisCatrix/">
-        <LinkedinStyled src={githup} />
+        <LogoStyled src={githup} />
       </LinkStyled>
     </ContainerStyled>
   );
