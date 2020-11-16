@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
 import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
+import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
 import { geolocated } from "react-geolocated";
-import iconShadow from "../images/marker-shadow.png";
 import L from "leaflet";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import styled from "styled-components";
@@ -18,6 +18,7 @@ import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
 
 const PopupStyled = styled.div`
+  font-family: "Montserrat", sans-serif;
   width: max-content;
   height: max-content;
   @media screen and (max-width: 375px) and (max-height: 812px) {
@@ -68,12 +69,33 @@ const IconBicycle = styled(Bicycle)`
   }
 `;
 
+const InfoCB = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  margin-top: 1vh;
+`;
+
 const CBStyled = styled(CreditCard)`
+  width: 20px;
   &.available {
-    width: 20px;
   }
   &.notAvailable {
+    color: #000000;
+  }
+`;
+
+const CircleSlashStyled = styled(CircleSlash)`
+  &.available {
     display: none;
+    opacity: 65%;
+  }
+  &.notAvailable {
+    width: 30px;
+    color: #ff0000;
+    position: absolute;
+    opacity: 65%;
   }
 `;
 
@@ -113,10 +135,18 @@ class MapLille extends React.Component {
 
     function iconSelect(index) {
       let fillingRate =
-        stations[index].fields.nbplacesdispo /
+        stations[index].fields.nbvelosdispo /
         (stations[index].fields.nbplacesdispo +
           stations[index].fields.nbvelosdispo);
-      if (fillingRate === 0) {
+
+      if (stations[index].fields.etat.includes("HORS SERVICE")) {
+        return iconPb;
+      } else if (
+        stations[index].fields.nbvelosdispo === 0 &&
+        stations[index].fields.nbplacesdispo === 0
+      ) {
+        return iconPb;
+      } else if (fillingRate === 0) {
         return icon0;
       } else if (fillingRate < 0.33) {
         return icon1;
@@ -124,10 +154,8 @@ class MapLille extends React.Component {
         return icon2;
       } else if (fillingRate < 1) {
         return icon3;
-      } else if (fillingRate === 1) {
-        return icon4;
       } else {
-        return iconPb;
+        return icon4;
       }
     }
 
@@ -150,10 +178,10 @@ class MapLille extends React.Component {
                 iconUrl: iconSelect(index),
                 iconRetinaUrl: iconSelect(index),
                 shadowUrl: iconShadow,
-                iconSize: [38, 95],
-                iconAnchor: [22, 94],
+                iconSize: [30, 42],
+                iconAnchor: [15, 42],
                 shadowAnchor: [12, 42],
-                popupAnchor: [0, -85],
+                popupAnchor: [0, -40],
               })}
             >
               <Popup>
@@ -172,13 +200,22 @@ class MapLille extends React.Component {
                     <br />
                     {station.fields.adresse}
                     <br />
-                    <CBStyled
-                      className={
-                        station.fields.type.includes("AVEC TPE")
-                          ? "available"
-                          : "notAvailable"
-                      }
-                    />
+                    <InfoCB>
+                      <CBStyled
+                        className={
+                          station.fields.type.includes("AVEC TPE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                      <CircleSlashStyled
+                        className={
+                          station.fields.type.includes("AVEC TPE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                    </InfoCB>
                   </div>
                   <InfoBicycle>
                     <IconBicycle
@@ -195,6 +232,7 @@ class MapLille extends React.Component {
                   </InfoBicycle>
                 </PopupStyled>
               </Popup>
+              )}
             </Marker>
           ))}
         </Map>
