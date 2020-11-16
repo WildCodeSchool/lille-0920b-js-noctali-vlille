@@ -13,7 +13,6 @@ const ListStyled = styled.div`
 	font-family: "Montserrat", sans-serif;
 `;
 
-
 const Status = styled.div`
 	display: inline-block;
 	border-radius: 50%;
