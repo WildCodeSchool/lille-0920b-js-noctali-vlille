@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 const InputStyled = styled.input`
-  width: 20vw;
+  width: 30vw;
   margin: 0vh 2vw;
 `;
 
@@ -20,7 +20,7 @@ const SelectContainer = styled.ul`
 const SelectStation = styled.li`
   display: flex;
   align-items: center;
-  width: 20vw;
+  width: 30vw;
   height: 5vh;
   border: 1px solid #e26262;
   background-color: #461d1d;
@@ -29,6 +29,15 @@ const SelectStation = styled.li`
   padding-left: 1vw;
   /* height: 10vh; */
   color: #fed96a;
+`;
+
+const CityStations = styled.li`
+  font-style: italic;
+`;
+
+const NameStations = styled.li`
+  font-weight: bold;
+  margin-left: 0.5vw;
 `;
 
 export default function SearchBar() {
@@ -59,11 +68,12 @@ export default function SearchBar() {
   return (
     <div>
       <InputStyled type="text" onChange={(e) => findSearch(e.target.value)} />
-      <SumbitSearch type="submit">Send</SumbitSearch>
+      <SumbitSearch type="submit">Chercher</SumbitSearch>
       <SelectContainer>
         {commune.map((station) => (
           <SelectStation>
-            {station.fields.commune} {station.fields.nom}
+            <CityStations>{station.fields.commune} - </CityStations>
+            <NameStations>{station.fields.nom}</NameStations>
           </SelectStation>
         ))}
       </SelectContainer>
