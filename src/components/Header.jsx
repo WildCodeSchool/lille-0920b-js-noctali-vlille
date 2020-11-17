@@ -1,4 +1,5 @@
 import Logo1 from "../images/logo1.png";
+import SearchBar from "./SearchBar";
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
@@ -19,6 +20,7 @@ const Header = () => {
   return (
     <HeaderStyled>
       <LogoHeader id="logoHeader" src={Logo1} alt="logo" />
+      <SearchBar/>
     </HeaderStyled>
   );
 };
