@@ -160,7 +160,15 @@ class MapLille extends React.Component {
     }
 
     //Distance between user and stations
-    const distance = Math.hypot(x2 - x1, y2 - y1);
+    function distance(index) {
+      console.log(
+        Math.hypot(
+          latitude - stations[index].geometry.coordinates[1],
+          longitude - stations[index].geometry.coordinates[0]
+        )
+      );
+    }
+    distance(1);
 
     return (
       <div>
