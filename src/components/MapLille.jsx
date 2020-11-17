@@ -159,6 +159,9 @@ class MapLille extends React.Component {
       }
     }
 
+    //Distance between user and stations
+    const distance = Math.hypot(x2 - x1, y2 - y1);
+
     return (
       <div>
         <Map center={[latitude, longitude]} zoom={14} minZoom={11}>
