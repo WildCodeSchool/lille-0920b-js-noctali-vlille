@@ -17,6 +17,14 @@ import icon4 from "../images/marker-full.png";
 import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
 
+const MapStyled = styled.div`
+  .leaflet-container {
+    width: 100%;
+    height: 80vh;
+    opacity: 99%;
+  }
+`;
+
 const PopupStyled = styled.div`
   font-family: "Montserrat", sans-serif;
   width: max-content;
@@ -161,6 +169,7 @@ class MapLille extends React.Component {
 
     return (
       <div>
+        <MapStyled>
         <Map center={[latitude, longitude]} zoom={14} minZoom={11}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -232,10 +241,10 @@ class MapLille extends React.Component {
                   </InfoBicycle>
                 </PopupStyled>
               </Popup>
-              )}
             </Marker>
           ))}
         </Map>
+        </MapStyled>
       </div>
     );
   }
