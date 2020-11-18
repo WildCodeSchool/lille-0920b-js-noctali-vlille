@@ -113,8 +113,21 @@ class MapLille extends React.Component {
         "https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=251&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion"
       )
       .then(({ data }) => {
+        const stations = data.records
+          .map((station) => {
+            const lat = station.geometry.coordinates[1];
+            const lng = station.geometry.coordinates[0];
+            station.distance = Math.hypot(
+              this.props.coords.latitude - lat,
+              this.props.coords.longitude - lng
+            );
+            return station;
+          })
+          .sort((a, b) => {
+            return a.distance - b.distance;
+          });
         this.setState({
-          stations: data.records,
+          stations,
         });
       });
   }
@@ -158,17 +171,6 @@ class MapLille extends React.Component {
         return icon4;
       }
     }
-
-    //Distance between user and stations
-    function distance(index) {
-      console.log(
-        Math.hypot(
-          latitude - stations[index].geometry.coordinates[1],
-          longitude - stations[index].geometry.coordinates[0]
-        )
-      );
-    }
-    distance(1);
 
     return (
       <div>
