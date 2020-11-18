@@ -1,12 +1,20 @@
 import React from "react";
 import axios from "axios";
-import { Bicycle } from "@styled-icons/fa-solid/Bicycle";
-import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
-import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
 import { geolocated } from "react-geolocated";
 import L from "leaflet";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
-import styled from "styled-components";
+import {
+  MapStyled,
+  PopupStyled,
+  IsWorking,
+  NameStation,
+  InfoBicycle,
+  InfoNbrBike,
+  IconBicycle,
+  InfoCB,
+  CBStyled,
+  CircleSlashStyled,
+} from "../ComponentsStyled/MapLilleStyled";
 
 //Markers import
 import icon0 from "../images/marker-empty.png";
@@ -16,96 +24,6 @@ import icon3 from "../images/marker-3-4.png";
 import icon4 from "../images/marker-full.png";
 import iconPb from "../images/marker-pb.png";
 import iconShadow from "../images/marker-shadow.png";
-
-const MapStyled = styled.div`
-  .leaflet-container {
-    width: 100%;
-    height: 80vh;
-    opacity: 99%;
-  }
-`;
-
-const PopupStyled = styled.div`
-  font-family: "Montserrat", sans-serif;
-  width: max-content;
-  height: max-content;
-  @media screen and (max-width: 375px) and (max-height: 812px) {
-    width: 35vw;
-  }
-`;
-
-const IsWorking = styled.li`
-  padding-bottom: 0.75vh;
-  font-weight: 600;
-  &.work {
-    color: green;
-  }
-  &.dontWork {
-    color: #ff3c00;
-  }
-`;
-
-const NameStation = styled.span`
-  font-weight: bold;
-`;
-
-const InfoBicycle = styled.div`
-  display: flex;
-  margin: 1vw 0vw;
-  @media screen and (max-width: 375px) and (max-height: 812px) {
-    display: inline;
-  }
-`;
-
-const InfoNbrBike = styled.span`
-  margin: 1vw;
-  font-size: 1.5em;
-  @media screen and (max-width: 375px) and (max-height: 812px) {
-    margin: 3vw;
-  }
-`;
-
-const IconBicycle = styled(Bicycle)`
-  width: 40px;
-  padding: 0.5vh 0vw;
-  &.available {
-    color: #00b600;
-  }
-
-  &.notAvailable {
-    color: #adadad;
-  }
-`;
-
-const InfoCB = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  margin-top: 1vh;
-`;
-
-const CBStyled = styled(CreditCard)`
-  width: 20px;
-  &.available {
-  }
-  &.notAvailable {
-    color: #000000;
-  }
-`;
-
-const CircleSlashStyled = styled(CircleSlash)`
-  &.available {
-    display: none;
-    opacity: 65%;
-  }
-  &.notAvailable {
-    width: 30px;
-    color: #ff0000;
-    position: absolute;
-    opacity: 65%;
-  }
-`;
 
 class MapLille extends React.Component {
   constructor(props) {
@@ -170,80 +88,80 @@ class MapLille extends React.Component {
     return (
       <div>
         <MapStyled>
-        <Map center={[latitude, longitude]} zoom={14} minZoom={11}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
+          <Map center={[latitude, longitude]} zoom={14} minZoom={11}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
 
-          {stations.map((station, index) => (
-            <Marker
-              key={index}
-              position={[
-                station.geometry.coordinates[1],
-                station.geometry.coordinates[0],
-              ]}
-              icon={L.icon({
-                iconUrl: iconSelect(index),
-                iconRetinaUrl: iconSelect(index),
-                shadowUrl: iconShadow,
-                iconSize: [30, 42],
-                iconAnchor: [15, 42],
-                shadowAnchor: [12, 42],
-                popupAnchor: [0, -40],
-              })}
-            >
-              <Popup>
-                <PopupStyled>
-                  <IsWorking
-                    className={
-                      station.fields.etat.includes("EN SERVICE")
-                        ? "work"
-                        : "dontWork"
-                    }
-                  >
-                    {station.fields.etat}
-                  </IsWorking>
-                  <div>
-                    <NameStation>{station.fields.nom}</NameStation>
-                    <br />
-                    {station.fields.adresse}
-                    <br />
-                    <InfoCB>
-                      <CBStyled
-                        className={
-                          station.fields.type.includes("AVEC TPE")
-                            ? "available"
-                            : "notAvailable"
-                        }
-                      />
-                      <CircleSlashStyled
-                        className={
-                          station.fields.type.includes("AVEC TPE")
-                            ? "available"
-                            : "notAvailable"
-                        }
-                      />
-                    </InfoCB>
-                  </div>
-                  <InfoBicycle>
-                    <IconBicycle
+            {stations.map((station, index) => (
+              <Marker
+                key={index}
+                position={[
+                  station.geometry.coordinates[1],
+                  station.geometry.coordinates[0],
+                ]}
+                icon={L.icon({
+                  iconUrl: iconSelect(index),
+                  iconRetinaUrl: iconSelect(index),
+                  shadowUrl: iconShadow,
+                  iconSize: [30, 42],
+                  iconAnchor: [15, 42],
+                  shadowAnchor: [12, 42],
+                  popupAnchor: [0, -40],
+                })}
+              >
+                <Popup>
+                  <PopupStyled>
+                    <IsWorking
                       className={
                         station.fields.etat.includes("EN SERVICE")
-                          ? "available"
-                          : "notAvailable"
+                          ? "work"
+                          : "dontWork"
                       }
-                    />
-                    <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
-                    <br />
-                    <IconBicycle className="notAvailable" />
-                    <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
-                  </InfoBicycle>
-                </PopupStyled>
-              </Popup>
-            </Marker>
-          ))}
-        </Map>
+                    >
+                      {station.fields.etat}
+                    </IsWorking>
+                    <div>
+                      <NameStation>{station.fields.nom}</NameStation>
+                      <br />
+                      {station.fields.adresse}
+                      <br />
+                      <InfoCB>
+                        <CBStyled
+                          className={
+                            station.fields.type.includes("AVEC TPE")
+                              ? "available"
+                              : "notAvailable"
+                          }
+                        />
+                        <CircleSlashStyled
+                          className={
+                            station.fields.type.includes("AVEC TPE")
+                              ? "available"
+                              : "notAvailable"
+                          }
+                        />
+                      </InfoCB>
+                    </div>
+                    <InfoBicycle>
+                      <IconBicycle
+                        className={
+                          station.fields.etat.includes("EN SERVICE")
+                            ? "available"
+                            : "notAvailable"
+                        }
+                      />
+                      <InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
+                      <br />
+                      <IconBicycle className="notAvailable" />
+                      <InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
+                    </InfoBicycle>
+                  </PopupStyled>
+                </Popup>
+              </Marker>
+            ))}
+          </Map>
         </MapStyled>
       </div>
     );
