@@ -69,6 +69,11 @@ const IconBicycle = styled(Bicycle)`
   }
 `;
 
+const DistanceAndCb = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const InfoCB = styled.div`
   display: flex;
   justify-content: center;
@@ -213,22 +218,25 @@ class MapLille extends React.Component {
                     <br />
                     {station.fields.adresse}
                     <br />
-                    <InfoCB>
-                      <CBStyled
-                        className={
-                          station.fields.type.includes("AVEC TPE")
-                            ? "available"
-                            : "notAvailable"
-                        }
-                      />
-                      <CircleSlashStyled
-                        className={
-                          station.fields.type.includes("AVEC TPE")
-                            ? "available"
-                            : "notAvailable"
-                        }
-                      />
-                    </InfoCB>
+                    <DistanceAndCb>
+                      <InfoCB>
+                        <CBStyled
+                          className={
+                            station.fields.type.includes("AVEC TPE")
+                              ? "available"
+                              : "notAvailable"
+                          }
+                        />
+                        <CircleSlashStyled
+                          className={
+                            station.fields.type.includes("AVEC TPE")
+                              ? "available"
+                              : "notAvailable"
+                          }
+                        />
+                      </InfoCB>
+                      <p>{Math.trunc(station.distance * 100000)}m</p>
+                    </DistanceAndCb>
                   </div>
                   <InfoBicycle>
                     <IconBicycle
@@ -245,7 +253,6 @@ class MapLille extends React.Component {
                   </InfoBicycle>
                 </PopupStyled>
               </Popup>
-              )}
             </Marker>
           ))}
         </Map>
