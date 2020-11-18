@@ -76,7 +76,7 @@ const ButtonStyled = styled.button`
 	background: #fed45e;
 	font-weight: bold 13px;
 	color: #242424;
-	vertical-align: center;
+	vertical-align: middle;
 	outline: none;
 	margin-bottom: 20px;
 `;
