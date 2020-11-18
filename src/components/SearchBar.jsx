@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -27,7 +27,6 @@ const SelectStation = styled.li`
   list-style: none;
   margin-left: 2vw;
   padding-left: 1vw;
-  /* height: 10vh; */
   color: #fed96a;
 `;
 
@@ -41,7 +40,16 @@ const NameStations = styled.li`
 `;
 
 export default function SearchBar() {
+  const [display, setDisplay] = useState(false);
   const [commune, setCommune] = useState([]);
+  const wrapperRef = useRef(null);
+  
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
 
   const findSearch = (stationsCity) => {
     axios
@@ -65,18 +73,32 @@ export default function SearchBar() {
       });
   };
 
+  const handleClickOutside = (e) => {
+    const { current: wrap } = wrapperRef;
+    if (wrap && !wrap.contains(e.target)) {
+      setDisplay(false);
+    }
+  };
+
   return (
-    <div>
-      <InputStyled type="text" onChange={(e) => findSearch(e.target.value)} />
+    <div ref={wrapperRef}>
+      <InputStyled
+        type="text"
+        onClick={() => setDisplay(!display)}
+        placeholder="Chercher ma commune..."
+        onChange={(e) => findSearch(e.target.value)}
+      />
       <SumbitSearch type="submit">Chercher</SumbitSearch>
-      <SelectContainer>
-        {commune.map((station) => (
-          <SelectStation>
-            <CityStations>{station.fields.commune} - </CityStations>
-            <NameStations>{station.fields.nom}</NameStations>
-          </SelectStation>
-        ))}
-      </SelectContainer>
+      {display && (
+        <SelectContainer>
+          {commune.map((station) => (
+            <SelectStation>
+              <CityStations>{station.fields.commune} - </CityStations>
+              <NameStations>{station.fields.nom}</NameStations>
+            </SelectStation>
+          ))}
+        </SelectContainer>
+      )}
     </div>
   );
 }
