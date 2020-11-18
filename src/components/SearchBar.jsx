@@ -1,49 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import styled from "styled-components";
-
-const InputStyled = styled.input`
-  width: 30vw;
-  margin: 0vh 2vw;
-`;
-
-const SumbitSearch = styled.button`
-  width: 8vw;
-  height: 4vh;
-`;
-
-const SelectContainer = styled.ul`
-  position: absolute;
-  z-index: 1;
-`;
-
-const SelectStation = styled.li`
-  display: flex;
-  align-items: center;
-  width: 30vw;
-  height: 5vh;
-  border: 1px solid #e26262;
-  background-color: #461d1d;
-  list-style: none;
-  margin-left: 2vw;
-  padding-left: 1vw;
-  color: #fed96a;
-`;
-
-const CityStations = styled.li`
-  font-style: italic;
-`;
-
-const NameStations = styled.li`
-  font-weight: bold;
-  margin-left: 0.5vw;
-`;
+import {
+  InputStyled,
+  SumbitSearch,
+  SelectContainer,
+  SelectStation,
+  CityStations,
+  NameStations,
+} from "../ComponentsStyled/SearchBarStyled";
 
 export default function SearchBar() {
   const [display, setDisplay] = useState(false);
   const [commune, setCommune] = useState([]);
   const wrapperRef = useRef(null);
-  
+
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -65,7 +35,9 @@ export default function SearchBar() {
           // en majuscule. Ainsi la recherche fonctionne en minuscule et en majuscule dans l'input.
         });
         setCommune(records);
-        console.log(records);
+        if (stationsCity === "") {
+          return setCommune([]);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -84,7 +56,7 @@ export default function SearchBar() {
     <div ref={wrapperRef}>
       <InputStyled
         type="text"
-        onClick={() => setDisplay(!display)}
+        onClick={() => setDisplay(true)}
         placeholder="Chercher ma commune..."
         onChange={(e) => findSearch(e.target.value)}
       />
