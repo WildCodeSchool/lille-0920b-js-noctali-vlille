@@ -122,10 +122,15 @@ class MapLille extends React.Component {
           .map((station) => {
             const lat = station.geometry.coordinates[1];
             const lng = station.geometry.coordinates[0];
-            station.distance = Math.hypot(
-              this.props.coords.latitude - lat,
-              this.props.coords.longitude - lng
-            );
+
+            const longitude = this.props.coords
+              ? this.props.coords.longitude
+              : 3.06;
+
+            const latitude = this.props.coords
+              ? this.props.coords.latitude
+              : 50.63;
+            station.distance = Math.hypot(latitude - lat, longitude - lng);
             return station;
           })
           .sort((a, b) => {
@@ -140,8 +145,8 @@ class MapLille extends React.Component {
   render() {
     const { stations } = this.state;
 
-    const DEFAULT_LATITUDE = 50.6365654;
-    const DEFAULT_LONGITUDE = 3.0635282;
+    const DEFAULT_LATITUDE = 50.63;
+    const DEFAULT_LONGITUDE = 3.06;
 
     const longitude = this.props.coords
       ? this.props.coords.longitude
