@@ -1,12 +1,10 @@
 import React from "react";
-import homefondnoir from "../images/homefondnoir.jpg";
+import map from "../images/map.png";
 import team from "../images/team.jpg";
 import info from "../images/info.png";
-import logoGps from "../images/logoGps.png";
+import logoGps from "../images/stations.jpg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-
 
 const AlignStyled = styled.ul`
   background-color: #242424;
@@ -24,20 +22,15 @@ const ImageStyled = styled.img`
 
 function Footer() {
   return (
-    
     <AlignStyled>
       <li>
         <Link to="/about">
-          <ImageStyled
-            id="info"
-            src={info}
-            alt="logoinfo"
-          />
+          <ImageStyled id="info" src={info} alt="logoinfo" />
         </Link>
       </li>
       <li>
         <Link to="/">
-          <ImageStyled id="home" src={homefondnoir} alt="home" />
+          <ImageStyled id="home" src={map} alt="home" />
         </Link>
       </li>
       <li>
@@ -47,7 +40,7 @@ function Footer() {
       </li>
       <li>
         <Link to="/stationslist">
-          <ImageStyled id="logogps" src={logoGps} alt="logoGps"/>
+          <ImageStyled id="logogps" src={logoGps} alt="logoGps" />
         </Link>
       </li>
     </AlignStyled>
