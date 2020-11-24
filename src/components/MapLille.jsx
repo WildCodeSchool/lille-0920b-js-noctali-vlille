@@ -5,7 +5,7 @@ import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
 import { geolocated } from "react-geolocated";
 import L from "leaflet";
-import { Map, Marker, TileLayer, Popup } from "react-leaflet";
+import { Map, Marker, TileLayer, Popup, LayersControl } from "react-leaflet";
 import styled from "styled-components";
 
 //Markers import
@@ -162,78 +162,87 @@ class MapLille extends React.Component {
 		return (
 			<div>
 				<Map center={[latitude, longitude]} zoom={14} minZoom={11}>
-					<TileLayer
-						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-						attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-					/>
-
-					{stations.map((station, index) => (
-						<Marker
-							key={index}
-							position={[
-								station.geometry.coordinates[1],
-								station.geometry.coordinates[0],
-							]}
-							icon={L.icon({
-								iconUrl: iconSelect(index),
-								iconRetinaUrl: iconSelect(index),
-								shadowUrl: iconShadow,
-								iconSize: [30, 42],
-								iconAnchor: [15, 42],
-								shadowAnchor: [12, 42],
-								popupAnchor: [0, -40],
-							})}
-						>
-							<Popup>
-								<PopupStyled>
-									<IsWorking
-										className={
-											station.fields.etat.includes("EN SERVICE")
-												? "work"
-												: "dontWork"
-										}
-									>
-										{station.fields.etat}
-									</IsWorking>
-									<div>
-										<NameStation>{station.fields.nom}</NameStation>
-										<br />
-										{station.fields.adresse}
-										<br />
-										<InfoCB>
-											<CBStyled
-												className={
-													station.fields.type.includes("AVEC TPE")
-														? "available"
-														: "notAvailable"
-												}
-											/>
-											<CircleSlashStyled
-												className={
-													station.fields.type.includes("AVEC TPE")
-														? "available"
-														: "notAvailable"
-												}
-											/>
-										</InfoCB>
-									</div>
-									<InfoBicycle>
-										<IconBicycle
+					<LayersControl position="topright">
+						<LayersControl.BaseLayer checked name="Theme Stardard">
+							<TileLayer
+								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+								url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+							/>
+						</LayersControl.BaseLayer>
+						<LayersControl.BaseLayer name="Theme Sombre">
+							<TileLayer
+								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+								url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+							/>
+						</LayersControl.BaseLayer>
+						{stations.map((station, index) => (
+							<Marker
+								key={index}
+								position={[
+									station.geometry.coordinates[1],
+									station.geometry.coordinates[0],
+								]}
+								icon={L.icon({
+									iconUrl: iconSelect(index),
+									iconRetinaUrl: iconSelect(index),
+									shadowUrl: iconShadow,
+									iconSize: [30, 42],
+									iconAnchor: [15, 42],
+									shadowAnchor: [12, 42],
+									popupAnchor: [0, -40],
+								})}
+							>
+								<Popup>
+									<PopupStyled>
+										<IsWorking
 											className={
 												station.fields.etat.includes("EN SERVICE")
-													? "available"
-													: "notAvailable"
+													? "work"
+													: "dontWork"
 											}
-										/>
-										<InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
-										<br />
-										<IconBicycle className="notAvailable" />
-										<InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
-									</InfoBicycle>
-								</PopupStyled>
-							</Popup>
-						</Marker>
-					))}
+										>
+											{station.fields.etat}
+										</IsWorking>
+										<div>
+											<NameStation>{station.fields.nom}</NameStation>
+											<br />
+											{station.fields.adresse}
+											<br />
+											<InfoCB>
+												<CBStyled
+													className={
+														station.fields.type.includes("AVEC TPE")
+															? "available"
+															: "notAvailable"
+													}
+												/>
+												<CircleSlashStyled
+													className={
+														station.fields.type.includes("AVEC TPE")
+															? "available"
+															: "notAvailable"
+													}
+												/>
+											</InfoCB>
+										</div>
+										<InfoBicycle>
+											<IconBicycle
+												className={
+													station.fields.etat.includes("EN SERVICE")
+														? "available"
+														: "notAvailable"
+												}
+											/>
+											<InfoNbrBike>{station.fields.nbvelosdispo}</InfoNbrBike>
+											<br />
+											<IconBicycle className="notAvailable" />
+											<InfoNbrBike>{station.fields.nbplacesdispo}</InfoNbrBike>
+										</InfoBicycle>
+									</PopupStyled>
+								</Popup>
+							</Marker>
+						))}
+					</LayersControl>
 				</Map>
 			</div>
 		);
