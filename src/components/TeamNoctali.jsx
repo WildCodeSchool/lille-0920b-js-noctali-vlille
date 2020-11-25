@@ -130,12 +130,12 @@ function TeamNoctali() {
       <Items>
         <Item1>
           <Name>Nordine Madoui</Name>
-          <a href="https://github.com/nordinemadoui/" target="_blank">
+          <a href="https://github.com/nordinemadoui/" target="blank">
             <Logo src={githup} />
           </a>
           <a
             href="https://www.linkedin.com/in/nordine-madoui-a063811bb/"
-            target="_blank"
+            target="blank"
           >
             <Logo src={linkedin} />
           </a>
@@ -144,12 +144,12 @@ function TeamNoctali() {
 
         <Item2>
           <Name>Thomas Druart</Name>
-          <a href="https://github.com/thomasdruart/" target="_blank">
+          <a href="https://github.com/thomasdruart/" target="blank">1
             <Logo src={githup} />
           </a>
           <a
             href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr"
-            target="_blank"
+            target="blank"
           >
             <Logo src={linkedin} />
           </a>
@@ -157,12 +157,12 @@ function TeamNoctali() {
         </Item2>
         <Item3>
           <Name>Gaetan Cordonnier</Name>
-          <a href="https://github.com/gaetan-cordonnier/" target="_blank">
+          <a href="https://github.com/gaetan-cordonnier/" target="blank">
             <Logo src={githup} />
           </a>
           <a
             href="https://www.linkedin.com/in/gaetancordonnier/"
-            target="_blank"
+            target="blank"
           >
             <Logo src={linkedin} />
           </a>
@@ -171,10 +171,10 @@ function TeamNoctali() {
 
         <Item4>
           <Name>Alexis Catrix</Name>
-          <a href="https://github.com/AlexisCatrix/" target="_blank">
+          <a href="https://github.com/AlexisCatrix/" target="blank">
             <Logo src={githup} />
           </a>
-          <a href="https://www.linkedin.com/" target="_blank">
+          <a href="https://www.linkedin.com/" target="blank">
             <Logo src={linkedin} />
           </a>
           <PictureStyled id="gaetan" src={Alexis} alt="picturealexis" />

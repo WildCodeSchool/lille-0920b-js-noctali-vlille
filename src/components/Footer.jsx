@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const Align = styled.ul`
   background-color: #242424;
   width: 100vw;
-  height: 10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
