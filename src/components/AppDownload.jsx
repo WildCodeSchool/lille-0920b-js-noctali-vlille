@@ -50,7 +50,11 @@ const AppStyled = styled.img`
   border: 1px solid;
   background-color: #242424;
   @media (max-width: 768px) {
-    display: none;
+    position:relative;
+    left:90px;
+    width:200px;
+    height:100px;
+
   }
 `;
 
@@ -74,12 +78,23 @@ const ButtonStyled = styled.button`
   height: 40px;
   color: white;
   margin-right: 90px;
+  @media (max-width: 768px) {
+    position:relative;
+    left:30px;
+    top: 80px;
+  
+  }
 `;
 
 const Paragraphe = styled.p`
   color: white;
   text-align: center;
   padding-top: 50px;
+  @media (max-width: 768px) {
+    display:none;
+  
+  }
+
 `;
 
 const Star = styled.div`
@@ -88,8 +103,8 @@ const Star = styled.div`
   font-size: 1em;
   margin-left: -250px;
   @media (max-width: 768px) {
-    font-size: 15px;
-    text-align: center;
+    position:relative;
+    right:90px;
   }
 `;
 
@@ -103,6 +118,10 @@ const Button = styled.button`
   height: 40px;
   color: gray;
   font-weight: bolder;
+  @media (max-width: 768px) {
+    display:none;
+  }
+
 `;
 
 function AppDownload() {

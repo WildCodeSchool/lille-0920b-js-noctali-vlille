@@ -2,7 +2,7 @@ import React from "react";
 import Logo1 from "../images/logo1.png";
 import Nordine from "../images/nordine.jpg";
 import Thomas from "../images/thomas.jpg";
-import Gaetan from "../images/gaetan.jpeg";
+import Gaetan from "../images/gaetan.jpg";
 import Alexis from "../images/alexis.jpeg";
 import linkedin from "../images/linkedin.png";
 import githup from "../images/githup.png";
@@ -17,16 +17,16 @@ const Color = styled.div`
   height: 100%;
   background-color: #242424;
   @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
   }
 `;
 
 const Paragraphe = styled.p`
   color: white;
-  margin: 15px;
+  margin: 30px;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -43,19 +43,23 @@ const PictureStyled = styled.img`
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   @media (max-width: 768px) {
-    display: none;
+  display: none;
   }
 `;
 const Logo = styled.img`
   width: 40px;
   height: 30px;
-  margin-bottom: 300px;
-  margin-right: -5px;
-
+  position: relative;
+  bottom: 300px;
+  left: 150px;
+  margin:5px;
+  @media (max-width: 768px) {
+    position:relative;
+    bottom: 40px;
+    left:20px
   
-
-  
-
+  }
+ 
 `;
 const Team = styled.h1`
   margin-top: -100px;
@@ -92,6 +96,7 @@ const Items = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+  
   }
 `;
 
@@ -101,6 +106,10 @@ const Logo2 = styled.img`
   margin-left: auto;
   margin-right: auto;
 `;
+
+const Name = styled.h2`
+    margin:50px;
+    margin-left:120px`
 
 function TeamNoctali() {
   return (
@@ -120,7 +129,7 @@ function TeamNoctali() {
 
       <Items>
         <Item1>
-          <h2>Nordine Madoui</h2>
+          <Name>Nordine Madoui</Name>
           <a href="https://github.com/nordinemadoui/" target="_blank">
             <Logo src={githup} />
           </a>
@@ -134,7 +143,7 @@ function TeamNoctali() {
         </Item1>
 
         <Item2>
-          <h2>Thomas Druart</h2>
+          <Name>Thomas Druart</Name>
           <a href="https://github.com/thomasdruart/" target="_blank">
             <Logo src={githup} />
           </a>
@@ -147,7 +156,7 @@ function TeamNoctali() {
           <PictureStyled id="thomas" src={Thomas} alt="picturethomas" />
         </Item2>
         <Item3>
-          <h2>Gaetan Cordonnier</h2>
+          <Name>Gaetan Cordonnier</Name>
           <a href="https://github.com/gaetan-cordonnier/" target="_blank">
             <Logo src={githup} />
           </a>
@@ -161,7 +170,7 @@ function TeamNoctali() {
         </Item3>
 
         <Item4>
-          <h2>Alexis Catrix</h2>
+          <Name>Alexis Catrix</Name>
           <a href="https://github.com/AlexisCatrix/" target="_blank">
             <Logo src={githup} />
           </a>
