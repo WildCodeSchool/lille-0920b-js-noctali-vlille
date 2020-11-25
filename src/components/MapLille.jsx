@@ -258,6 +258,7 @@ class MapLille extends React.Component {
                   </InfoBicycle>
                 </PopupStyled>
               </Popup>
+              )
             </Marker>
           ))}
         </Map>
