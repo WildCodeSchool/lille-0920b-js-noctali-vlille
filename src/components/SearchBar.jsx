@@ -3,15 +3,19 @@ import axios from "axios";
 import {
   InputStyled,
   SumbitSearch,
+  SearchContainer,
   SelectContainer,
   SelectStation,
   CityStations,
   NameStations,
-} from "../ComponentsStyled/SearchBarStyled";
+  LinkStyled,
+} from "../componentsStyled/SearchBarStyled";
+import "leaflet";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   const [display, setDisplay] = useState(false);
   const [commune, setCommune] = useState([]);
+
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -38,36 +42,46 @@ export default function SearchBar() {
         if (stationsCity === "") {
           return setCommune([]);
         }
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log("It is a failure");
+        setDisplay(true);
       });
   };
 
   const handleClickOutside = (e) => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(e.target)) {
-      setDisplay(false);
+      return setDisplay(false);
     }
   };
 
+  const renderStationOnMap = (stationsLocalisation) => {
+    let stationLocalisation = stationsLocalisation.fields.geo;
+    setDisplay(false);
+  };
+  // La fonction renderStationOnMap a pour but de retrouver une station via une methode "flyTo'" sur la map,
+  // lorsque l'élément est cliqué.
+
+  const { className, onClick } = props;
   return (
     <div ref={wrapperRef}>
-      <InputStyled
-        type="text"
-        onClick={() => setDisplay(true)}
-        placeholder="Chercher ma commune..."
-        onChange={(e) => findSearch(e.target.value)}
-      />
-      <SumbitSearch type="submit">Chercher</SumbitSearch>
+      <SearchContainer className={className}>
+        <InputStyled
+          className={className}
+          onClick={(() => handleClickOutside, onClick)}
+          type="text"
+          placeholder="Chercher ma commune..."
+          onChange={(e) => findSearch(e.target.value)}
+        />
+        <SumbitSearch type="submit">Chercher</SumbitSearch>
+      </SearchContainer>
       {display && (
         <SelectContainer>
           {commune.map((station) => (
-            <SelectStation>
-              <CityStations>{station.fields.commune} - </CityStations>
-              <NameStations>{station.fields.nom}</NameStations>
-            </SelectStation>
+            <LinkStyled to="/">
+              <SelectStation onClick={() => renderStationOnMap(station)}>
+                <CityStations>{station.fields.commune} - </CityStations>
+                <NameStations>{station.fields.nom}</NameStations>
+              </SelectStation>
+            </LinkStyled>
           ))}
         </SelectContainer>
       )}
