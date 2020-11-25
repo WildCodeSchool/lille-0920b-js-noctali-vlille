@@ -9,22 +9,31 @@ import githup from "../images/githup.png";
 import school from "../images/school.jpg";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Color = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100% auto;
+  text-align: center;
+  align-content: stretch;
   height: 100%;
   background-color: #242424;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+  }
 `;
 
 const Paragraphe = styled.p`
-  width: 400px;
-  text-align: center;
-  margin: 10px;
   color: white;
+  margin: 15px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 768px) {
+    width: 200px;
+  }
 `;
-
 const PictureStyled = styled.img`
   width: 200px;
   height: 300px;
@@ -33,137 +42,135 @@ const PictureStyled = styled.img`
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
-
 const Logo = styled.img`
   width: 40px;
   height: 30px;
-`;
+  margin-bottom: 300px;
+  margin-right: -5px;
 
-const Githup = styled.img`
-  width: 40px;
-  height: 30px;
-`;
+  
 
+  
+
+`;
 const Team = styled.h1`
-  margin: -15px;
-  font-size: 40px;
+  margin-top: -100px;
+  font-size: 45px;
   color: orange;
 `;
 const School = styled.img`
-  margin-right: -1250px;
-  margin-top: -70px;
   width: 90px;
   height: 100px;
+  float: right;
+  margin-left: 1250px;
 `;
 
-const Picture = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const NameStyled = styled.div`
-  display: flex;
-  justify-content: space-around;
-  font-weight: bold;
-  margin: 20px;
+const Item1 = styled.div`
   color: orange;
 `;
 
-const Color = styled.div`
-  background-color: #242424;
-  width: 100% auto;
+const Item2 = styled.div`
+  color: orange;
 `;
 
-const Item = styled.div`
+const Item3 = styled.div`
+  color: orange;
+`;
+
+const Item4 = styled.div`
+  color: orange;
+`;
+
+const Items = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-const Item1 = styled.a`
-  margin-left: 140px;
-  margin-right: -130px;
-`;
-
-const Item2 = styled.a`
-  margin-left: 400px;
-  margin-right: -390px;
-`;
-
-const Item3 = styled.a`
-  margin-left: 640px;
-  margin-right: -630px;
-`;
-
-const Item4 = styled.a`
-  margin-left: 920px;
-  margin-right: -910px;
+const Logo2 = styled.img`
+  width: 13;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 function TeamNoctali() {
   return (
     <Color>
-      <Container>
-        <Team>L'EQUIPE</Team>
-        <School id="school" src={school} alt="school" />
-        <Paragraphe>
-          La réalisation de cette application web sur une durée de 6 semaines
-          avec l'utilisation de l'API V'lille fut piloté par une équipe de 4
-          développeurs juniors passionnés par la programmation au sein de la
-          Wild Code School de Lille.
-        </Paragraphe>
-        <img id="Velo1" src={Logo1} alt="logovelo" />
-        <Paragraphe>Les membres de l'équipe :</Paragraphe>
-        <br />
-      </Container>
+      <School src={school} />
+      <Team>L'EQUIPE</Team>
 
-      <NameStyled>
-        <h2>Nordine Madoui</h2>
-        <h2>Thomas Druart</h2>
-        <h2>Gaetan Cordonnier</h2>
-        <h2>Alexis Catrix</h2>
-      </NameStyled>
-      <Item>
-        <Item1 href="https://github.com/nordinemadoui/">
-          <Githup src={githup} />
+      <Paragraphe>
+        La réalisation de cette application web sur une durée de 6 semaines avec
+        l'utilisation de l'API V'lille fut piloté par une équipe de 4
+        développeurs juniors passionnés par la programmation au sein de la Wild
+        Code School de Lille.
+      </Paragraphe>
+      <Logo2 id="Velo1" src={Logo1} alt="logovelo" />
+      <Paragraphe>Les membres de l'équipe :</Paragraphe>
+      <br />
+
+      <Items>
+        <Item1>
+          <h2>Nordine Madoui</h2>
+          <a href="https://github.com/nordinemadoui/" target="_blank">
+            <Logo src={githup} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nordine-madoui-a063811bb/"
+            target="_blank"
+          >
+            <Logo src={linkedin} />
+          </a>
+          <PictureStyled id="nordine" src={Nordine} alt="picturenordine" />
         </Item1>
-        <Item1
-          href="https://www.linkedin.com/in/nordine-madoui-a063811bb/"
-          target="_blank"
-        >
-          <Logo src={linkedin} />
-        </Item1>
-        <Item2 href="https://github.com/thomasdruart/" target="_blank">
-          <Githup src={githup} />
+
+        <Item2>
+          <h2>Thomas Druart</h2>
+          <a href="https://github.com/thomasdruart/" target="_blank">
+            <Logo src={githup} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr"
+            target="_blank"
+          >
+            <Logo src={linkedin} />
+          </a>
+          <PictureStyled id="thomas" src={Thomas} alt="picturethomas" />
         </Item2>
-        <Item2
-          href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr"
-          target="_blank"
-        >
-          <Logo src={linkedin} />
-        </Item2>
-        <Item3 href="https://github.com/gaetan-cordonnier/" target="_blank">
-          <Githup src={githup} />
+        <Item3>
+          <h2>Gaetan Cordonnier</h2>
+          <a href="https://github.com/gaetan-cordonnier/" target="_blank">
+            <Logo src={githup} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/gaetancordonnier/"
+            target="_blank"
+          >
+            <Logo src={linkedin} />
+          </a>
+          <PictureStyled id="gaetan" src={Gaetan} alt="picturegaetan" />
         </Item3>
-        <Item3
-          href="https://www.linkedin.com/in/gaetancordonnier/"
-          target="_blank"
-        >
-          <Logo src={linkedin} />
-        </Item3>
-        <Item4 href="https://github.com/AlexisCatrix/" target="_blank">
-          <Githup src={githup} />
+
+        <Item4>
+          <h2>Alexis Catrix</h2>
+          <a href="https://github.com/AlexisCatrix/" target="_blank">
+            <Logo src={githup} />
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank">
+            <Logo src={linkedin} />
+          </a>
+          <PictureStyled id="gaetan" src={Alexis} alt="picturealexis" />
         </Item4>
-        <Item4 href="https://www.linkedin.com/" target="_blank">
-          <Logo src={linkedin} />
-        </Item4>
-      </Item>
-      <Picture>
-        <PictureStyled id="nordine" src={Nordine} alt="picturenordine" />
-        <PictureStyled id="thomas" src={Thomas} alt="picturethomas" />
-        <PictureStyled id="gaetan" src={Gaetan} alt="picturegaetan" />
-        <PictureStyled id="gaetan" src={Alexis} alt="picturealexis" />
-      </Picture>
+      </Items>
     </Color>
   );
 }

@@ -1,16 +1,34 @@
 import React from "react";
 import Logo1 from "../images/logo1.png";
-import Home from "../images/Home.png";
-import carte from "../images/carte.png";
-import stations from "../images/stations.png";
 import styled from "styled-components";
 import UseModal from "./UseModal";
 import Modal from "./Modal";
+import Home from "../images/Home.png";
+import carte from "../images/carte.png";
+import stations from "../images/stations.png";
 
 const PageStyled = styled.div`
   background-color: #242424;
   width: 100%;
   height: 80vh;
+  margin: auto;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+  }
+`;
+const Image = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  border: none;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ImageStyled = styled.img`
@@ -19,6 +37,9 @@ const ImageStyled = styled.img`
   padding: 0px;
   margin: 5px;
   border: 1px solid;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const AppStyled = styled.img`
@@ -28,6 +49,9 @@ const AppStyled = styled.img`
   margin: 5px;
   border: 1px solid;
   background-color: #242424;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const BorderStyled = styled.div`
@@ -52,13 +76,6 @@ const ButtonStyled = styled.button`
   margin-right: 90px;
 `;
 
-const Image = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  border: none;
-`;
-
 const Paragraphe = styled.p`
   color: white;
   text-align: center;
@@ -70,6 +87,10 @@ const Star = styled.div`
   text-decoration: none;
   font-size: 1em;
   margin-left: -250px;
+  @media (max-width: 768px) {
+    font-size: 15px;
+    text-align: center;
+  }
 `;
 
 const Button = styled.button`
@@ -92,7 +113,7 @@ function AppDownload() {
       <BorderStyled>
         <AppStyled id="logoHeader" src={Logo1} alt="logo" />
         <Star>
-          <p>☆ ☆ ☆ ☆ ☆ 34 </p>
+          <p> &#11088; &#11088; &#11088; &#11088; &#11088; 33 </p>
           <br />
           <p>Plans et navigation</p>
         </Star>
@@ -100,11 +121,9 @@ function AppDownload() {
         <ButtonStyled>Télécharger</ButtonStyled>
       </BorderStyled>
       <Image>
-        <ImageStyled id="HomeApp" src={Home} alt="logohome" />
-
-        <ImageStyled id="carte" src={carte} alt="logocarte" />
-
-        <ImageStyled id="stations" src={stations} alt="logostations" />
+        <ImageStyled src={Home} alt="logohome" />
+        <ImageStyled src={carte} alt="logocarte" />
+        <ImageStyled src={stations} alt="logostations" />
       </Image>
       <Paragraphe>
         L'application offre également une recherche rapide et une localisation

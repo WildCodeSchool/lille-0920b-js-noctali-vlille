@@ -6,7 +6,7 @@ import logoGps from "../images/stations.jpg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const AlignStyled = styled.ul`
+const Align = styled.ul`
   background-color: #242424;
   width: 100vw;
   height: 10vh;
@@ -15,35 +15,35 @@ const AlignStyled = styled.ul`
   align-items: center;
   color: white;
 `;
-const ImageStyled = styled.img`
+const Image = styled.img`
   height: 50px;
   width: 50px;
 `;
 
 function Footer() {
   return (
-    <AlignStyled>
+    <Align>
       <li>
         <Link to="/about">
-          <ImageStyled id="info" src={info} alt="logoinfo" />
+          <Image id="info" src={info} alt="logoinfo" />
         </Link>
       </li>
       <li>
         <Link to="/">
-          <ImageStyled id="home" src={map} alt="home" />
+          <Image id="home" src={map} alt="home" />
         </Link>
       </li>
       <li>
         <Link to="/teamnoctali">
-          <ImageStyled id="teams" src={team} alt="teams" />
+          <Image id="teams" src={team} alt="teams" />
         </Link>
       </li>
       <li>
         <Link to="/stationslist">
-          <ImageStyled id="logogps" src={logoGps} alt="logoGps" />
+          <Image id="logogps" src={logoGps} alt="logoGps" />
         </Link>
       </li>
-    </AlignStyled>
+    </Align>
     //</FooterStyled>
   );
 }

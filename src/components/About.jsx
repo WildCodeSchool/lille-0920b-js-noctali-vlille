@@ -10,6 +10,11 @@ const DivStyled = styled.div`
   width: 100% auto;
   height: 80vh;
   background-color: #242424;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ImgStyled = styled.img`
@@ -18,19 +23,27 @@ const ImgStyled = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
-const BorderStyled = styled.div`
+const Border = styled.div`
   box-shadow: 1px solid;
   padding: 10px;
   margin: auto;
   background-color: #242424;
 `;
 
-const TitleStyled = styled.h1`
+const Title = styled.h1`
   font-family: "Roboto", Arial, sans-serif;
   font-size: 30px;
   color: orange;
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
 `;
 
 const Paragraphe = styled.div`
@@ -40,19 +53,26 @@ const Paragraphe = styled.div`
 const Span = styled.span`
   color: orange;
   text-decoration: none;
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Vlille = styled.a`
   float: right;
   text-decoration: none;
   color: orange;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const About = () => {
   return (
     <DivStyled>
-      <BorderStyled>
-        <TitleStyled>Doukilemin V'lille</TitleStyled>
+      <Border>
+        <Title>Doukilemin V'lille</Title>
 
         <ImgStyled id="Velo1" src={Velo1} alt="logovelo" />
         <Paragraphe>
@@ -97,7 +117,7 @@ const About = () => {
             </li>
           </ul>
         </Paragraphe>
-      </BorderStyled>
+      </Border>
     </DivStyled>
   );
 };

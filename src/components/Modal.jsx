@@ -70,7 +70,6 @@ const Rate = styled.div`
 const starRating = {
   size: 40,
   count: 5,
-  isHalf: false,
   value: 0,
   color: "white",
   activeColor: "rgb(104, 159, 56)",
