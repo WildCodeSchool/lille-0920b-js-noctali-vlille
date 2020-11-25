@@ -1,7 +1,7 @@
+import { Switch, Route } from "react-router-dom";
 import MapLille from "./components/MapLille";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import "./App.css";
 import { Reset } from "styled-reset";
 import { Route, Switch } from "react-router-dom";
 import About from "./components/About";
@@ -15,23 +15,12 @@ function App() {
       <Reset />
 
       <Header />
-
       <Switch>
-        <Route exact path="/">
-          <MapLille />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/appdownload">
-          <AppDownload />
-        </Route>
-        <Route path="/teamnoctali">
-          <TeamNoctali />
-        </Route>
-        <Route path="/stationslist">
-          <StationsList />
-        </Route>
+        <Route exact path="/" component={MapLille}/>
+        <Route path="/about"> component={About}/>
+        <Route path="/appdownload" component={AppDownload}/>
+        <Route path="/teamnoctali" component={TeamNoctali} >
+        <Route path="/stationslist" component={StationsList} >
       </Switch>
       <Footer />
     </div>
