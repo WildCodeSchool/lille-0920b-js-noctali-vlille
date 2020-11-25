@@ -14,7 +14,7 @@ import {
   InfoCB,
   CBStyled,
   CircleSlashStyled,
-} from "../ComponentsStyled/MapLilleStyled";
+} from "../componentsStyled/MapLilleStyled";
 
 //Markers import
 import icon0 from "../images/marker-empty.png";
