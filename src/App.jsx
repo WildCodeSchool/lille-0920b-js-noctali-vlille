@@ -1,3 +1,4 @@
+import { Switch, Route } from "react-router-dom";
 import MapLille from "./components/MapLille";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,7 +10,14 @@ function App() {
     <div>
       <Reset />
       <Header />
-      <MapLille />
+      <Switch>
+        <Route exact path="/">
+          <MapLille />
+        </Route>
+        <Route path="/stationslist">
+          <StationsList />
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );
