@@ -31,30 +31,21 @@ const Paragraphe = styled.p`
   margin-left: auto;
   margin-right: auto;
   @media (max-width: 768px) {
-    width: 200px;
+    width: 350px;
   }
 `;
 const PictureStyled = styled.img`
   width: 200px;
   height: 300px;
   filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 const Logo = styled.img`
   width: 40px;
   height: 30px;
-  position: relative;
   bottom: 300px;
   left: 150px;
   margin: 5px;
   @media (max-width: 768px) {
-    position: relative;
     bottom: 40px;
     left: 20px;
   }
@@ -71,20 +62,14 @@ const School = styled.img`
   margin-left: 1250px;
 `;
 
-const Item1 = styled.div`
+const Item = styled.div`
   color: orange;
-`;
-
-const Item2 = styled.div`
-  color: orange;
-`;
-
-const Item3 = styled.div`
-  color: orange;
-`;
-
-const Item4 = styled.div`
-  color: orange;
+  margin: 0vh 4vw 2vh;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Items = styled.div`
@@ -93,8 +78,15 @@ const Items = styled.div`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 `;
 
 const Logo2 = styled.img`
@@ -105,8 +97,9 @@ const Logo2 = styled.img`
 `;
 
 const Name = styled.h2`
-  margin: 50px;
-  margin-left: 120px;
+  display: flex;
+  flex-direction: column;
+  margin: 5vh;
 `;
 
 function TeamNoctali() {
@@ -126,58 +119,66 @@ function TeamNoctali() {
       <br />
 
       <Items>
-        <Item1>
+        <Item>
           <Name>Nordine Madoui</Name>
-          <a href="https://github.com/nordinemadoui/" target="blank">
-            <Logo src={githup} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/nordine-madoui-a063811bb/"
-            target="blank"
-          >
-            <Logo src={linkedin} />
-          </a>
           <PictureStyled id="nordine" src={Nordine} alt="picturenordine" />
-        </Item1>
+          <LogoContainer>
+            <a href="https://github.com/nordinemadoui/" target="blank">
+              <Logo src={githup} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/nordine-madoui-a063811bb/"
+              target="blank"
+            >
+              <Logo src={linkedin} />
+            </a>
+          </LogoContainer>
+        </Item>
 
-        <Item2>
+        <Item>
           <Name>Thomas Druart</Name>
-          <a href="https://github.com/thomasdruart/" target="blank">
-            1
-            <Logo src={githup} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr"
-            target="blank"
-          >
-            <Logo src={linkedin} />
-          </a>
           <PictureStyled id="thomas" src={Thomas} alt="picturethomas" />
-        </Item2>
-        <Item3>
-          <Name>Gaetan Cordonnier</Name>
-          <a href="https://github.com/gaetan-cordonnier/" target="blank">
-            <Logo src={githup} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/gaetancordonnier/"
-            target="blank"
-          >
-            <Logo src={linkedin} />
-          </a>
-          <PictureStyled id="gaetan" src={Gaetan} alt="picturegaetan" />
-        </Item3>
+          <LogoContainer>
+            <a href="https://github.com/thomasdruart/" target="blank">
+              <Logo src={githup} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/thomas-druart/?originalSubdomain=fr"
+              target="blank"
+            >
+              <Logo src={linkedin} />
+            </a>
+          </LogoContainer>
+        </Item>
 
-        <Item4>
+        <Item>
+          <Name>Gaetan Cordonnier</Name>
+          <PictureStyled id="gaetan" src={Gaetan} alt="picturegaetan" />
+          <LogoContainer>
+            <a href="https://github.com/gaetan-cordonnier/" target="blank">
+              <Logo src={githup} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/gaetancordonnier/"
+              target="blank"
+            >
+              <Logo src={linkedin} />
+            </a>
+          </LogoContainer>
+        </Item>
+
+        <Item>
           <Name>Alexis Catrix</Name>
-          <a href="https://github.com/AlexisCatrix/" target="blank">
-            <Logo src={githup} />
-          </a>
-          <a href="https://www.linkedin.com/" target="blank">
-            <Logo src={linkedin} />
-          </a>
           <PictureStyled id="gaetan" src={Alexis} alt="picturealexis" />
-        </Item4>
+          <LogoContainer>
+            <a href="https://github.com/AlexisCatrix/" target="blank">
+              <Logo src={githup} />
+            </a>
+            <a href="https://www.linkedin.com/" target="blank">
+              <Logo src={linkedin} />
+            </a>
+          </LogoContainer>
+        </Item>
       </Items>
     </Color>
   );
