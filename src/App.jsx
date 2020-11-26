@@ -8,6 +8,7 @@ import About from "./components/About";
 import AppDownload from "./components/AppDownload";
 import TeamNoctali from "./components/TeamNoctali";
 import StationsList from "./components/StationsList";
+import Reminder from "./components/Reminder";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/stationslist">
           <StationsList />
+        </Route>
+        <Route path="/reminder">
+          <Reminder />
         </Route>
       </Switch>
       <Footer />

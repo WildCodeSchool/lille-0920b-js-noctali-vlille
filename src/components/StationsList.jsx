@@ -2,33 +2,45 @@ import React from "react";
 import axios from "axios";
 import { Warning } from "@styled-icons/ionicons-solid/Warning";
 import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
+import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
 import styled from "styled-components";
 import { geolocated } from "react-geolocated";
 
 const ListStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: #f1f1f1;
-  position: relative;
-  padding: 11vh 10px 10vh 10px;
-  z-index: 1;
+  padding: 10px;
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
+`;
+
+const StationStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const StationTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const NameStation = styled.span`
   font-weight: bold;
   font-size: 1.2rem;
-`;
-
-const AdressStation = styled.span`
-  font-size: 0.9rem;
+  vertical-align: middle;
 `;
 
 const Status = styled.div`
-  display: inline-block;
+  display: flex-start;
+`;
+
+const StatusPoint = styled.div`
   border-radius: 50%;
   width: 10px;
   height: 10px;
-  margin: 0 5px 1px 5px;
+  margin: 0px 5px 1px 5px;
 
   &.Online {
     background: green;
@@ -45,8 +57,8 @@ const Status = styled.div`
 `;
 
 const WarningIcon = styled(Warning)`
-  width: 20px;
-  padding: 0px 5px 7px 5px;
+  width: 25px;
+  margin: 0px 5px 1px 5px;
 
   &.Icon {
     color: #ff9d00;
@@ -57,24 +69,59 @@ const WarningIcon = styled(Warning)`
   }
 `;
 
+const InfoCB = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+`;
+
 const CBStyled = styled(CreditCard)`
   width: 20px;
-  padding: 0px 5px 6px 5px;
 
   &.available {
   }
   &.notAvailable {
-    color: red;
-    opacity: 0.33;
+    opacity: 75%;
+    color: #000000;
   }
 `;
 
-const Line = styled.hr`
-  border: 1px solid #242424;
+const CircleSlashStyled = styled(CircleSlash)`
+  &.available {
+    display: none;
+    opacity: 65%;
+  }
+  &.notAvailable {
+    height: 30px;
+    color: #ff0000;
+    position: absolute;
+    opacity: 65%;
+  }
 `;
 
-const Nb = styled.p`
-  font-weight: bold;
+const AdressStation = styled.span`
+  font-size: 0.9rem;
+  margin-top: 5px;
+`;
+
+const NumberbStations = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+const Cycles = styled.div`
+  margin-top: 10px;
+`;
+
+const Parkings = styled.div`
+  margin-top: 5px;
+`;
+
+const Line = styled.hr`
+  width: 100%;
+  border: 1px solid #b6b6b6;
 `;
 
 class StationsList extends React.Component {
@@ -103,43 +150,62 @@ class StationsList extends React.Component {
     return (
       <ListStyled>
         {stations.map((station) => (
-          <div>
-            <NameStation>{station.fields.nom}</NameStation>
-            <Status
-              className={
-                station.fields.etat.includes("EN SERVICE") ? "Online" : "None"
-              }
-            />
-            <Status
-              className={
-                station.fields.etat.includes("HORS SERVICE")
-                  ? "Offline"
-                  : "None"
-              }
-            />
-            <WarningIcon
-              className={
-                station.fields.etat.includes("EN MAINTENANCE") ? "Icon" : "None"
-              }
-            />
-            <CBStyled
-              className={
-                station.fields.type.includes("AVEC TPE")
-                  ? "available"
-                  : "notAvailable"
-              }
-            />
-            <br />
+          <StationStyled>
+            <StationTitle>
+              <NameStation>{station.fields.nom}</NameStation>
+              <Status>
+                <StatusPoint
+                  className={
+                    station.fields.etat.includes("EN SERVICE")
+                      ? "Online"
+                      : "None"
+                  }
+                />
+                <StatusPoint
+                  className={
+                    station.fields.etat.includes("HORS SERVICE")
+                      ? "Offline"
+                      : "None"
+                  }
+                />
+                <WarningIcon
+                  className={
+                    station.fields.etat.includes("EN MAINTENANCE")
+                      ? "Icon"
+                      : "None"
+                  }
+                />
+              </Status>
+              <InfoCB>
+                <CBStyled
+                  className={
+                    station.fields.type.includes("AVEC TPE")
+                      ? "available"
+                      : "notAvailable"
+                  }
+                />
+                <CircleSlashStyled
+                  className={
+                    station.fields.type.includes("AVEC TPE")
+                      ? "available"
+                      : "notAvailable"
+                  }
+                />
+              </InfoCB>
+            </StationTitle>
             <AdressStation>{station.fields.adresse}</AdressStation>
-            <br />
-            <br />
-            {"Vélos disponibles : "}
-            {station.fields.nbvelosdispo}
-            <br />
-            {"Emplacements libres : "}
-            {station.fields.nbplacesdispo}
+            <NumberbStations>
+              <Cycles>
+                {"Vélos disponibles : "}
+                {station.fields.nbvelosdispo}
+              </Cycles>
+              <Parkings>
+                {"Emplacements libres : "}
+                {station.fields.nbplacesdispo}
+              </Parkings>
+            </NumberbStations>
             <Line />
-          </div>
+          </StationStyled>
         ))}
       </ListStyled>
     );
