@@ -13,7 +13,6 @@ function App() {
   return (
     <div>
       <Reset />
-
       <Header />
       <Switch>
         <Route exact path="/">
