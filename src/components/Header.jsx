@@ -2,6 +2,7 @@ import Logo1 from "../images/logo1.png";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HeaderStyled = styled.header`
   display: flex;
@@ -33,12 +34,14 @@ const Header = () => {
 
   return (
     <HeaderStyled className={inputResized ? "resizeInput" : ""}>
-      <LogoHeader
-        className={inputResized ? "resizeInput" : ""}
-        id="logoHeader"
-        src={Logo1}
-        alt="logo"
-      />
+      <Link to="/">
+        <LogoHeader
+          className={inputResized ? "resizeInput" : ""}
+          id="logoHeader"
+          src={Logo1}
+          alt="logo"
+        />
+      </Link>
       <SearchBar
         className={inputResized ? "resizeInput" : ""}
         onClick={() => setInputResized(true)}
