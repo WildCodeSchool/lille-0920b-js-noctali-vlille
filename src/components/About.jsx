@@ -18,13 +18,13 @@ const DivStyled = styled.div`
 `;
 
 const ImgStyled = styled.img`
-  width: 400px;
+  width: 350px;
   height: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2vh auto;
   @media (max-width: 768px) {
-    display: none;
+    width: auto;
+    height: 30vh;
   }
 `;
 
@@ -48,6 +48,7 @@ const Title = styled.h1`
 
 const Paragraphe = styled.div`
   color: white;
+  margin: 5vw;
 `;
 
 const Span = styled.span`
