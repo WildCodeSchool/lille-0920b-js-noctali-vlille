@@ -1,7 +1,7 @@
+import { Switch, Route } from "react-router-dom";
 import MapLille from "./components/MapLille";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import "./App.css";
 import { Reset } from "styled-reset";
 import { Route, Switch } from "react-router-dom";
 import About from "./components/About";
@@ -15,7 +15,6 @@ function App() {
       <Reset />
 
       <Header />
-
       <Switch>
         <Route exact path="/">
           <MapLille />
