@@ -1,14 +1,15 @@
 import React from "react";
-import map from "../images/map.png";
-import team from "../images/team.jpg";
-import info from "../images/info.png";
-import logoGps from "../images/stations.jpg";
+import map from "../images/footer/map.svg";
+import team from "../images/footer/group.svg";
+import info from "../images/footer/information-button.svg";
+import bikeList from "../images/footer/bycicle.svg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Align = styled.ul`
   background-color: #242424;
   width: 100vw;
+  height: 10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -23,8 +24,8 @@ function Footer() {
   return (
     <Align>
       <li>
-        <Link to="/about">
-          <Image id="info" src={info} alt="logoinfo" />
+        <Link to="/stationslist">
+          <Image id="logogps" src={bikeList} alt="station list" />
         </Link>
       </li>
       <li>
@@ -38,8 +39,8 @@ function Footer() {
         </Link>
       </li>
       <li>
-        <Link to="/stationslist">
-          <Image id="logogps" src={logoGps} alt="logoGps" />
+        <Link to="/about">
+          <Image id="info" src={info} alt="logoinfo" />
         </Link>
       </li>
     </Align>
