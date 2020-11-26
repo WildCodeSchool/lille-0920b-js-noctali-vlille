@@ -30,7 +30,6 @@ export const SearchContainer = styled.div`
 export const SumbitSearch = styled(Search)`
   color: white;
   height: inherit;
-  /* height: 2vh; */
 `;
 
 export const SelectContainer = styled.ul`
