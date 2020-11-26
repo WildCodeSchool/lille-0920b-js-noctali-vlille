@@ -92,3 +92,8 @@ export const CircleSlashStyled = styled(CircleSlash)`
     opacity: 65%;
   }
 `;
+
+export const DistanceAndCb = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

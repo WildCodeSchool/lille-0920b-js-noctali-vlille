@@ -3,7 +3,6 @@ import MapLille from "./components/MapLille";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { Reset } from "styled-reset";
-import { Route, Switch } from "react-router-dom";
 import About from "./components/About";
 import AppDownload from "./components/AppDownload";
 import TeamNoctali from "./components/TeamNoctali";

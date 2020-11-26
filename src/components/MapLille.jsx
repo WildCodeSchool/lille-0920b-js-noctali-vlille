@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { geolocated } from "react-geolocated";
 import L from "leaflet";
-import { Map, Marker, TileLayer, Popup } from "react-leaflet";
+import { Map, Marker, TileLayer, Popup, LayersControl } from "react-leaflet";
 import {
   MapStyled,
   PopupStyled,
@@ -14,6 +14,7 @@ import {
   InfoCB,
   CBStyled,
   CircleSlashStyled,
+  DistanceAndCb
 } from "../componentsStyled/MapLilleStyled";
 
 //Markers import
