@@ -7,7 +7,7 @@ const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100% auto;
+  width: auto;
   height: 80vh;
   background-color: #242424;
   @media (max-width: 768px) {
@@ -18,21 +18,14 @@ const DivStyled = styled.div`
 `;
 
 const ImgStyled = styled.img`
-  width: 350px;
+  width: 300px;
   height: auto;
   display: block;
-  margin: 2vh auto;
+  margin: 2vh;
   @media (max-width: 768px) {
     width: auto;
     height: 30vh;
   }
-`;
-
-const Border = styled.div`
-  box-shadow: 1px solid;
-  padding: 10px;
-  margin: auto;
-  background-color: #242424;
 `;
 
 const Title = styled.h1`
@@ -48,12 +41,15 @@ const Title = styled.h1`
 
 const Paragraphe = styled.div`
   color: white;
-  margin: 5vw;
+  margin: 2vh;
+`;
+
+const LinkStyled = styled(Link)`
+  text-decoration: none;
 `;
 
 const Span = styled.span`
   color: orange;
-  text-decoration: none;
   @media (max-width: 768px) {
     display: flex;
     justify-content: center;
@@ -72,53 +68,51 @@ const Vlille = styled.a`
 const About = () => {
   return (
     <DivStyled>
-      <Border>
-        <Title>Doukilemin V'lille</Title>
+      <Title>Doukilemin V'lille</Title>
 
-        <ImgStyled id="Velo1" src={Velo1} alt="logovelo" />
-        <Paragraphe>
-          <p>
-            Doukilemin V'lille est dédié aux utilisateurs du V'lille et de son
-            service VLS (Vélos en Libre Service).
-          </p>
-          <p>
-            Au quotidien, l'application vous permet de gérer facilement:
-            <ul>
-              <br />
-              <li>
-                {" "}
-                - vos stations favorites afin de contrôler le nombre de vélos ou
-                emplacements disponibles.
-              </li>
-              <br />
-              <li>
-                {" "}
-                - trouver une station proche de votre position grace à la
-                localisation.
-              </li>
-            </ul>
-          </p>
-          <p>
-            <br />
-            Dès l'écran d'acceuil, Doukilemin V'lille affiche l'état des
-            stations, évitant ainsi les menus superflus.
-          </p>
+      <ImgStyled id="Velo1" src={Velo1} alt="logovelo" />
+      <Paragraphe>
+        <p>
+          Doukilemin V'lille est dédié aux utilisateurs du V'lille et de son
+          service VLS (Vélos en Libre Service).
+        </p>
+        <p>
+          Au quotidien, l'application vous permet de gérer facilement:
           <ul>
+            <br />
             <li>
-              <br />
-              <Link to="/appdownload">
-                <Span>Télécharger l'application</Span>
-              </Link>
-              <Vlille
-                href="https://www.goodmorninglille.org/blog/vlille-lille-location-de-velos"
-                target="_blank"
-              >
-                Guide d'utilisation V'lille
-              </Vlille>
+              {" "}
+              - vos stations favorites afin de contrôler le nombre de vélos ou
+              emplacements disponibles.
+            </li>
+            <br />
+            <li>
+              {" "}
+              - trouver une station proche de votre position grace à la
+              localisation.
             </li>
           </ul>
-        </Paragraphe>
-      </Border>
+        </p>
+        <p>
+          <br />
+          Dès l'écran d'accueil, Doukilemin V'lille affiche l'état des stations,
+          évitant ainsi les menus superflus.
+        </p>
+        <ul>
+          <li>
+            <br />
+            <LinkStyled to="/appdownload">
+              <Span>Télécharger l'application</Span>
+            </LinkStyled>
+            <Vlille
+              href="https://www.goodmorninglille.org/blog/vlille-lille-location-de-velos"
+              target="_blank"
+            >
+              Guide d'utilisation V'lille
+            </Vlille>
+          </li>
+        </ul>
+      </Paragraphe>
     </DivStyled>
   );
 };
