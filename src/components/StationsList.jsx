@@ -5,6 +5,7 @@ import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
 import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
 import styled from "styled-components";
 import { geolocated } from "react-geolocated";
+import LoadingBike from "./LoadingBike";
 
 const ListStyled = styled.div`
   display: flex;
@@ -133,81 +134,90 @@ class StationsList extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(
-        "https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=251&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion"
-      )
-      .then(({ data }) => {
-        this.setState({
-          stations: data.records,
+    this.setState({ loading: true }, () => {
+      axios
+        .get(
+          "https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=251&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion"
+        )
+        .then(({ data }) => {
+          this.setState({
+            stations: data.records,
+            loading: false,
+          });
         });
-      });
+    });
   }
 
   render() {
     const { stations } = this.state;
 
     return (
-      <ListStyled>
-        {stations.map((station) => (
-          <StationStyled>
-            <StationTitle>
-              <NameStation>{station.fields.nom}</NameStation>
-              <Status>
-                <StatusPoint
-                  className={
-                    station.fields.etat.includes("EN SERVICE")
-                      ? "Online"
-                      : "None"
-                  }
-                />
-                <StatusPoint
-                  className={
-                    station.fields.etat.includes("HORS SERVICE")
-                      ? "Offline"
-                      : "None"
-                  }
-                />
-                <WarningIcon
-                  className={
-                    station.fields.etat.includes("EN MAINTENANCE")
-                      ? "Icon"
-                      : "None"
-                  }
-                />
-              </Status>
-              <InfoCB>
-                <CBStyled
-                  className={
-                    station.fields.type.includes("AVEC TPE")
-                      ? "available"
-                      : "notAvailable"
-                  }
-                />
-                <CircleSlashStyled
-                  className={
-                    station.fields.type.includes("AVEC TPE")
-                      ? "available"
-                      : "notAvailable"
-                  }
-                />
-              </InfoCB>
-            </StationTitle>
-            <AdressStation>{station.fields.adresse}</AdressStation>
-            <NumberbStations>
-              <Cycles>
-                {"Vélos disponibles : "}
-                {station.fields.nbvelosdispo}
-              </Cycles>
-              <Parkings>
-                {"Emplacements libres : "}
-                {station.fields.nbplacesdispo}
-              </Parkings>
-            </NumberbStations>
-            <Line />
-          </StationStyled>
-        ))}
-      </ListStyled>
+      <div>
+        {this.state.loading ? (
+          <LoadingBike />
+        ) : (
+          <ListStyled>
+            {stations.map((station) => (
+              <StationStyled>
+                <StationTitle>
+                  <NameStation>{station.fields.nom}</NameStation>
+                  <Status>
+                    <StatusPoint
+                      className={
+                        station.fields.etat.includes("EN SERVICE")
+                          ? "Online"
+                          : "None"
+                      }
+                    />
+                    <StatusPoint
+                      className={
+                        station.fields.etat.includes("HORS SERVICE")
+                          ? "Offline"
+                          : "None"
+                      }
+                    />
+                    <WarningIcon
+                      className={
+                        station.fields.etat.includes("EN MAINTENANCE")
+                          ? "Icon"
+                          : "None"
+                      }
+                    />
+                  </Status>
+                  <InfoCB>
+                    <CBStyled
+                      className={
+                        station.fields.type.includes("AVEC TPE")
+                          ? "available"
+                          : "notAvailable"
+                      }
+                    />
+                    <CircleSlashStyled
+                      className={
+                        station.fields.type.includes("AVEC TPE")
+                          ? "available"
+                          : "notAvailable"
+                      }
+                    />
+                  </InfoCB>
+                </StationTitle>
+                <AdressStation>{station.fields.adresse}</AdressStation>
+                <NumberbStations>
+                  <Cycles>
+                    {"Vélos disponibles : "}
+                    {station.fields.nbvelosdispo}
+                  </Cycles>
+                  <Parkings>
+                    {"Emplacements libres : "}
+                    {station.fields.nbplacesdispo}
+                  </Parkings>
+                </NumberbStations>
+                <Line />
+              </StationStyled>
+            ))}
+          </ListStyled>
+        )}
+      </div>
     );
   }
 }
