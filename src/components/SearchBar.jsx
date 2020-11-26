@@ -53,8 +53,7 @@ export default function SearchBar(props) {
     }
   };
 
-  const renderStationOnMap = (stationsLocalisation) => {
-    let stationLocalisation = stationsLocalisation.fields.geo;
+  const renderStationOnMap = () => {
     setDisplay(false);
   };
   // La fonction renderStationOnMap a pour but de retrouver une station via une methode "flyTo'" sur la map,
