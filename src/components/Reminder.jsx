@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Lock } from "@styled-icons/boxicons-regular/Lock";
 import { CloseCircle } from "@styled-icons/ionicons-sharp/CloseCircle";
+import { Link } from "react-router-dom";
 
 const Background = styled.div`
   display: flex;
@@ -103,12 +104,14 @@ const Reminder = () => {
     <Background>
       <ReminderStyled>
         <IconCloseStyle>
-          <IconClose />
+          <Link to="/">
+            <IconClose />
+          </Link>
         </IconCloseStyle>
         <IconZap />
         <TitleStyled>Code de vérouillage :</TitleStyled>
         <InputStyled
-          maxlength="4"
+          maxLength="4"
           value={value}
           type="text"
           id="Code"
