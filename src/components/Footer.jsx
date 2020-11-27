@@ -3,6 +3,7 @@ import map from "../images/footer/map.svg";
 import team from "../images/footer/group.svg";
 import info from "../images/footer/information-button.svg";
 import bikeList from "../images/footer/bycicle.svg";
+import logoNote from "../images/logoNote.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -36,6 +37,11 @@ function Footer() {
       <li>
         <Link to="/teamnoctali">
           <Image id="teams" src={team} alt="teams" />
+        </Link>
+      </li>
+      <li>
+        <Link to="/reminder">
+          <Image id="teams" src={logoNote} alt="note" />
         </Link>
       </li>
       <li>

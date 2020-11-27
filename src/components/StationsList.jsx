@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Warning } from "@styled-icons/ionicons-solid/Warning";
 import { CreditCard } from "@styled-icons/bootstrap/CreditCard";
-import { CircleSlash } from "@styled-icons/octicons/CircleSlash";
+import noCreditCard from "../images/iconNoCB.png";
 import styled from "styled-components";
 import { geolocated } from "react-geolocated";
 import LoadingBike from "./LoadingBike";
@@ -11,7 +11,9 @@ const ListStyled = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #f1f1f1;
-  padding: 10px;
+  height: 76vh;
+  padding: 2vh;
+  overflow: auto;
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
 `;
@@ -74,31 +76,20 @@ const InfoCB = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
+  width: 30px;
 `;
 
 const CBStyled = styled(CreditCard)`
-  width: 20px;
-
+  width: 22px;
   &.available {
   }
   &.notAvailable {
-    opacity: 75%;
-    color: #000000;
+    display: none;
   }
 `;
 
-const CircleSlashStyled = styled(CircleSlash)`
-  &.available {
-    display: none;
-    opacity: 65%;
-  }
-  &.notAvailable {
-    height: 30px;
-    color: #ff0000;
-    position: absolute;
-    opacity: 65%;
-  }
+const NoCbStyled = styled.img`
+  width: max-content;
 `;
 
 const AdressStation = styled.span`
@@ -188,15 +179,15 @@ class StationsList extends React.Component {
                     <CBStyled
                       className={
                         station.fields.type.includes("AVEC TPE")
-                          ? "available"
+                          ? "availabe"
                           : "notAvailable"
                       }
                     />
-                    <CircleSlashStyled
-                      className={
+                    <NoCbStyled
+                      src={
                         station.fields.type.includes("AVEC TPE")
-                          ? "available"
-                          : "notAvailable"
+                          ? ""
+                          : noCreditCard
                       }
                     />
                   </InfoCB>

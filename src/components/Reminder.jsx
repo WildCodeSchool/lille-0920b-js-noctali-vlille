@@ -8,6 +8,7 @@ const Background = styled.div`
   display: flex;
   background-color: transparent;
   height: 80vh;
+  background-color: lightgrey;
 `;
 
 const ReminderStyled = styled.div`
