@@ -28,7 +28,7 @@ const Color = styled.div`
 
 const Paragraphe = styled.p`
   color: white;
-  margin: 30px;
+  margin: 15px;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -79,7 +79,7 @@ const Item = styled.div`
 const Items = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: -3vh;
+  margin-top: -5vh;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
