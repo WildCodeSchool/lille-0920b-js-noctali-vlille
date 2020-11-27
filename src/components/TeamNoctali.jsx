@@ -20,8 +20,9 @@ const Color = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 80%;
+    height: 80vh;
     width: auto;
+    overflow: auto;
   }
 `;
 
@@ -36,8 +37,8 @@ const Paragraphe = styled.p`
   }
 `;
 const PictureStyled = styled.img`
-  width: 200px;
-  height: 300px;
+  width: 150px;
+  height: auto;
   filter: grayscale(100%);
 `;
 const Logo = styled.img`
