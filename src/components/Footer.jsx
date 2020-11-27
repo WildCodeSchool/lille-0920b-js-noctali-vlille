@@ -21,34 +21,70 @@ const Image = styled.img`
   width: 50px;
 `;
 
+const LinkStyled = styled.li`
+  @media screen and (min-width: 481px) {
+    .unsetListDesktop {
+      display: none;
+    }
+    .centering {
+      margin-left: 10vw;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .unsetListMobile {
+      display: none;
+    }
+  }
+`;
+
 function Footer() {
   return (
     <Align>
-      <li>
+      <LinkStyled>
         <Link to="/stationslist">
-          <Image id="logogps" src={bikeList} alt="station list" />
+          <Image
+            className="centering"
+            id="logogps"
+            src={bikeList}
+            alt="station list"
+          />
         </Link>
-      </li>
-      <li>
+      </LinkStyled>
+      <LinkStyled>
+        <Link to="/teamnoctali">
+          <Image
+            className="unsetListMobile"
+            id="teams"
+            src={team}
+            alt="teams"
+          />
+        </Link>
+      </LinkStyled>
+      <LinkStyled>
         <Link to="/">
           <Image id="home" src={map} alt="home" />
         </Link>
-      </li>
-      <li>
-        <Link to="/teamnoctali">
-          <Image id="teams" src={team} alt="teams" />
-        </Link>
-      </li>
-      <li>
-        <Link to="/reminder">
-          <Image id="teams" src={logoNote} alt="note" />
-        </Link>
-      </li>
-      <li>
+      </LinkStyled>
+      <LinkStyled>
         <Link to="/about">
-          <Image id="info" src={info} alt="logoinfo" />
+          <Image
+            className="unsetListMobile"
+            id="info"
+            src={info}
+            alt="logoinfo"
+          />
         </Link>
-      </li>
+      </LinkStyled>
+      <LinkStyled>
+        <Link to="/reminder">
+          <Image
+            className="unsetListDesktop"
+            id="teams"
+            src={logoNote}
+            alt="note"
+          />
+        </Link>
+      </LinkStyled>
     </Align>
     //</FooterStyled>
   );
