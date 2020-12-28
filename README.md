@@ -1,9 +1,13 @@
-# APPLICATION DOUKILEMINVLILLE (V'Lille) CREATED BY NOCTALI TEAM:
+# DOUKILEMINVLILLE (V'Lille) APPLICATION 
 
-Alexis CATRIX GitHub Login -> AlexisCatrix
-Gaetan CORDONNIER - GitHub Login -> Gaetan-Cordonnier
-Nordine MADOUI - GitHub Login -> nordinemadoui
-Thomas Druart - GitHub Login -> ThomasDruart
+## CREATED BY NOCTALI TEAM:
+
+Alexis CATRIX GitHub Login -> AlexisCatrix <br>
+Gaetan CORDONNIER - GitHub Login -> gaetan-cordonnier <br>
+Nordine MADOUI - GitHub Login -> nordinemadoui <br>
+Thomas Druart - GitHub Login -> ThomasDruart <br>
+
+Wild Code School, LILLE (France)
 
 ## DESCRIPTION:
 
@@ -15,12 +19,12 @@ https://github.com/WildCodeSchool/lille-0920b-js-noctali-vlille
 
 ## TECHNICAL INFORMATIONS:
 
-Application REACT with :
-. Axios for import Api Leaflet
-. Leaflet for MAp
-. React Leaflet for Map
-. styled-components for CSS style
-. BrowserRouter for routing the pages
+Application REACT with : <br>
+. Axios for import API Leaflet <br>
+. Leaflet for Map <br>
+. React Leaflet for Map <br>
+. Styled-Components for CSS style <br>
+. BrowserRouter for routing the pages <br>
 
 ## 19/09/20
 
